@@ -1,0 +1,36 @@
+{
+  "schema": "lbs.stage26e-reload-semantics-erratum.v1",
+  "passed": true,
+  "status": "development_evidence_requires_structural_not_cache_equivalence",
+  "trigger_evidence": {
+    "reload_attempt02_verification_sha256": "a3fdf8b65f422acb95daec7f6ebd7bfb26f3738bc137aab3e9263c5554768f9d",
+    "reload_attempt02_failure_sha256": "5e13464ae3fb6fbd8f07b9c0f540022670939018bcb9772b76570fab11799b89",
+    "captured_state_sha256": "3786bdb0e76fdc27dd44d8357efe219f132f025b7794b19a7c22bc42a40633a8"
+  },
+  "observed_behavior": {
+    "all_structural_and_serialized_diagnostic_fields_match": true,
+    "captured_unbalanced_force": 0.01489501140471128,
+    "reloaded_unbalanced_force": 0.0,
+    "captured_maximum_penetration_ratio": 0.0003523238330076228,
+    "reloaded_maximum_penetration_ratio": 0.0,
+    "state_hash_unchanged": true,
+    "integration_steps_taken": 0
+  },
+  "revised_reload_acceptance": {
+    "state_file_hash_must_remain_exact": true,
+    "positions_cell_iteration_time_stress_topology_contact_sets_and_anchor_sets_must_match": true,
+    "capture_time_unbalanced_force_and_penetration_must_pass_original_gates": true,
+    "zero_step_reload_must_show_zero_cache_signature_for_unbalanced_force_and_penetration": true,
+    "claim_is_structural_reload_equivalence_not_full_runtime_cache_equivalence": true
+  },
+  "consequence": "A structurally verified capture is not directly release-ready. A later fixed-fibre rehydration stage must rebuild runtime contact/force caches and independently requalify equilibrium before any release.",
+  "authority": {
+    "development_reload_verifier_revision_authorized": true,
+    "candidate05_structural_reload_attempt03_authorized": true,
+    "candidate07_heldout_capture_authorized": false,
+    "rehydration_design_authorized": false,
+    "free_release_authorized": false,
+    "flow_execution_authorized": false
+  },
+  "claim_boundary": "Development correction of YADE checkpoint reload semantics only; no integration, rehydration, release, state promotion, or flow."
+}

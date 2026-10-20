@@ -1,0 +1,4 @@
+# Observed Python 3.12 desktop core; stage-specific compiler/BLAS qualification remains separate.
+numpy==2.3.1
+scipy==1.16.0
+psutil==7.1.3

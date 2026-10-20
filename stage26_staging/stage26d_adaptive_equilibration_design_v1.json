@@ -1,0 +1,72 @@
+{
+  "schema": "lbs.stage26d-adaptive-fixed-prefilter-design.v1",
+  "status": "frozen_design_not_execution_authority",
+  "research_question": "Can a fixed two-F37 placement reach and sustain the unchanged qualified sand-health state when equilibration is judged by consecutive passing blocks rather than one arbitrarily chosen terminal block?",
+  "claim_boundary": "Dry fixed-fibre equilibration-method development and one held-out geometry confirmation only. No free fibre motion, promoted DEM state, polymer calibration, permeability, flow, deformation, migration, or coupled physics.",
+  "evidence_roles": {
+    "development": "Revision-3 candidate01 and its Stage26c failure history may be used to design and test this equilibration procedure.",
+    "controls": "The Stage26a positive and Stage26b negative placements remain protocol controls.",
+    "held_out_confirmation": "Revision-3 candidate04 is selected before Stage26d execution because it is the next-lowest-index independently verified passing geometry. It must not influence protocol tuning."
+  },
+  "source_evidence": {
+    "stage26c_candidate01_outcome_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26c_revision3_fixed_prefilter_20260816/candidate01_outcome_checkpoint_01/checkpoint_manifest.json",
+    "stage26c_candidate01_outcome_checkpoint_sha256": "e008145f0eeb1d260dde15fd0f849a041499740ae35682f82edbe58e68851b4e",
+    "revision3_campaign_evaluation": "C:/MATDEM_MICROPLASTIC/stage26_evaluations/stage26b_revision3_joint_placement_20260816/campaign_evaluation_01/evaluation.json",
+    "revision3_campaign_evaluation_sha256": "20ffaef3e6f18539631ea6a43253dfb4ed4bfe2f36506c043835501c48262a40",
+    "heldout_candidate04_source": "C:/MATDEM_MICROPLASTIC/stage26_placements/stage26b_revision3_joint_placement_20260816/candidate_generation_01/stage26b_f002_revision3_candidate_04/placement.json",
+    "heldout_candidate04_source_sha256": "4c84834a319198561868d8a17ceecfdd6a087bc8bc26cc38a2d749179da47b90"
+  },
+  "frozen_protocol": {
+    "all_fibres_fixed": true,
+    "free_release": false,
+    "steps_per_block": 500,
+    "minimum_blocks_before_equilibrium_window": 60,
+    "maximum_blocks": 300,
+    "required_consecutive_passing_blocks": 10,
+    "stop_rule_interpretation": "The raw runner executes the full ceiling for immutable comparability; the evaluator reports the earliest qualifying 10-block window and does not discard later data."
+  },
+  "continuous_engagement_gate": {
+    "minimum_distinct_sand_contacts_per_fibre_at_every_block": 1,
+    "minimum_declared_anchor_contacts_per_fibre_at_every_block": 1,
+    "maximum_isolated_fibre_count_at_every_block": 0
+  },
+  "equilibrium_window_gate": {
+    "minimum_distinct_sand_contacts_per_fibre": 2,
+    "minimum_declared_anchor_contacts_per_fibre": 2,
+    "maximum_relative_mean_stress_error": 0.02,
+    "maximum_principal_stress_error": 0.03,
+    "maximum_unbalanced_force": 0.05,
+    "minimum_sand_coordination_excluding_rattlers": 3.0,
+    "maximum_sand_rattler_fraction": 0.35,
+    "minimum_sand_contact_retention_fraction": 0.9,
+    "maximum_sand_displacement_over_D50": 0.1,
+    "maximum_cell_volume_relative_drift": 0.005,
+    "maximum_interobject_penetration_over_smaller_radius": 0.02,
+    "maximum_fibre_fibre_real_interaction_count": 0,
+    "maximum_intraclump_real_interaction_count": 0
+  },
+  "unchanged_physics": [
+    "Stage25 216-grain checkpoint and periodic cell",
+    "F37 rigid clump geometry, mass, density, stiffness, friction, and fixed kinematics",
+    "100 Pa isotropic target, zero gravity, damping 0.35, timestep safety 0.2, maximum controller rate 0.02 s^-1",
+    "exact two-contact insertion and all Stage26c sand-health thresholds"
+  ],
+  "sequential_handoff": [
+    "positive control and negative control",
+    "candidate01 development only if both controls reproduce",
+    "candidate04 held-out confirmation once only if candidate01 passes without changing the frozen design"
+  ],
+  "failure_rules": {
+    "resource_ceiling": "No qualifying window by block 300 is a non-equilibration failure.",
+    "engagement": "Any isolated fibre or loss of all declared anchors at any block is a geometry-engagement failure.",
+    "confirmation": "A held-out failure closes Stage26d; the same confirmation case cannot be reused as independent evidence after redesign."
+  },
+  "authority": {
+    "source_implementation_authorized": true,
+    "control_execution_authorized": false,
+    "development_execution_authorized": false,
+    "heldout_confirmation_execution_authorized": false,
+    "free_release_authorized": false,
+    "flow_execution_authorized": false
+  }
+}

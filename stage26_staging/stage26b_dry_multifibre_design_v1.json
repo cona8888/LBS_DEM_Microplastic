@@ -1,0 +1,96 @@
+{
+  "schema": "lbs.stage26b-dry-multifibre-design.v1",
+  "status": "design_only",
+  "research_question": "What is the highest F37 fibre concentration up to approximately 0.1 dry mass percent that remains mechanically compatible with the frozen 216-grain LBS assembly at 100 Pa across the prescribed placement blocks?",
+  "claim_boundary": "Dry periodic small-assembly compatibility only; no physical mixing, polymer calibration, permeability, fluid forcing, migration, transient FSI, imposed deformation or production inference.",
+  "sources": {
+    "stage25_checkpoint_manifest": "C:/MATDEM_MICROPLASTIC/stage25_checkpoints/stage25a_pure_sand_mechanics_20260813/checkpoint_01/checkpoint_manifest.json",
+    "stage25_checkpoint_manifest_sha256": "c0717fa4376416e498ad4afbcbfcfe565d48974ee6d6c0aa3ff35b048fb1751d",
+    "stage25_checkpoint": "C:/MATDEM_MICROPLASTIC/stage25_runs/stage25a_pure_sand_mechanics_20260813/qualification_04/mu_0.60/load_bearing_state.yade.gz",
+    "stage25_checkpoint_sha256": "598107294f82d3a5f317f02fc87599d324fc614bb02bfd5048f6a932cced4aad",
+    "stage26a_checkpoint_manifest": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26a_dry_f37_insertion_20260813/checkpoint_01/checkpoint_manifest.json",
+    "stage26a_checkpoint_manifest_sha256": "72642fa302afa89a1789e216e46d8934b7dfa575fbb759b38d31b0b4cf919f30",
+    "stage26a_accepted_placement": "C:/MATDEM_MICROPLASTIC/stage26_placements/stage26a_dry_f37_insertion_20260813/placement_03/placement.json",
+    "stage26a_accepted_placement_sha256": "d1092744d76738de1974e5545b152716e12c6aa7ed03c728e5f8c4cbb2507ba2",
+    "expected_yade_version": "2022.01a"
+  },
+  "mass_basis": {
+    "frozen_sand_mass_kg": 0.00015213021193865423,
+    "single_fibre_mass_kg": 6.997520680643619e-9,
+    "mass_percent_definition": "100 * total_fibre_mass / (frozen_sand_mass + total_fibre_mass)"
+  },
+  "design": {
+    "all_fibre_counts": [0, 1, 2, 4, 8, 13, 21],
+    "inherited_reference_counts": [0, 1],
+    "new_execution_counts": [2, 4, 8, 13, 21],
+    "placement_blocks_by_count": {
+      "2": ["A"],
+      "4": ["A"],
+      "8": ["A", "B", "C"],
+      "13": ["A"],
+      "21": ["A", "B", "C"]
+    },
+    "placement_seed_base": 2026082620,
+    "orientation_regime": "isotropic",
+    "adaptive_tiers": [[2, 4], [8], [13], [21]],
+    "stop_on_any_failed_case_in_completed_tier": true,
+    "highest_supported_concentration_rule": "highest concentration for which every prescribed placement block passes",
+    "mixed_replicate_rule": "classify as a transition region; do not average to pass"
+  },
+  "placement": {
+    "method": "multi-fibre extension of Stage26a force-and-moment-balanced two-sand-tip-anchor placement",
+    "target_anchor_penetration_over_member_radius": 0.005,
+    "maximum_sand_fibre_penetration_over_member_radius": 0.02,
+    "maximum_initial_normal_force_residual_relative_per_fibre": 0.10,
+    "maximum_initial_normal_moment_residual_relative_per_fibre": 0.10,
+    "minimum_distinct_initial_sand_contacts_per_fibre": 2,
+    "require_zero_initial_fibre_fibre_overlap": true,
+    "require_fibres_wholly_inside_primary_cell": true,
+    "anchor_reuse_policy": "disallow within a fibre; record and limit across fibres during preflight",
+    "maximum_anchor_multiplicity_across_fibres": 2
+  },
+  "relaxation": {
+    "target_mean_effective_stress_pa_compression_positive": 100.0,
+    "gravity_m_s2": [0.0, 0.0, 0.0],
+    "newton_damping": 0.35,
+    "maximum_strain_rate_s_inv": 0.02,
+    "steps_per_check_block": 500,
+    "maximum_check_blocks": 500,
+    "required_consecutive_pass_blocks": 5,
+    "timestep_safety_coefficient": 0.2,
+    "reset_checkpoint_particle_velocities": true,
+    "fixed_all_fibres_conditioning_blocks": 60,
+    "fixed_fibre_steps_per_block": 500,
+    "release_all_fibres_together": true
+  },
+  "acceptance": {
+    "required_sand_particle_count": 216,
+    "required_members_per_fibre": 37,
+    "maximum_relative_mean_stress_error": 0.02,
+    "maximum_principal_stress_error": 0.03,
+    "maximum_unbalanced_force": 0.02,
+    "maximum_normalized_kinetic_energy_pV": 0.00001,
+    "minimum_sand_coordination_excluding_rattlers": 3.0,
+    "maximum_sand_rattler_fraction": 0.35,
+    "baseline_sand_sand_real_contacts": 361,
+    "minimum_sand_sand_contact_retention_fraction": 0.90,
+    "minimum_distinct_terminal_sand_contacts_per_fibre": 2,
+    "maximum_isolated_fibre_count": 0,
+    "maximum_interobject_penetration_over_smaller_radius": 0.02,
+    "maximum_rms_sand_displacement_over_D50": 0.05,
+    "maximum_sand_displacement_over_D50": 0.20,
+    "maximum_cell_volume_relative_drift": 0.005,
+    "maximum_tip_span_relative_drift": 1e-8,
+    "maximum_fibre_com_displacement_over_length": 0.50,
+    "maximum_fibre_rotation_degrees": 90.0
+  },
+  "authority": {
+    "design_generation_authorized": true,
+    "placement_generation_authorized": false,
+    "multi_fibre_yade_execution_authorized": false,
+    "flow_execution_authorized": false,
+    "transient_two_way_coupling_authorized": false,
+    "deformation_coupled_flow_authorized": false,
+    "production_parametric_study_authorized": false
+  }
+}

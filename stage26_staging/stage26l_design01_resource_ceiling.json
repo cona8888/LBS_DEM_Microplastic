@@ -1,0 +1,25 @@
+{
+  "schema": "lbs.stage26l-design-resource-ceiling-record.v1",
+  "passed": true,
+  "status": "inconclusive_precontact_resource_ceiling",
+  "physics_failure": false,
+  "blocks_executed": 1600,
+  "terminal_sand_skeleton_void_ratio": 1.2096671629218667,
+  "terminal_sand_contact_count": 0,
+  "terminal_fibre_contacts": [0, 0],
+  "maximum_nonaffine_translation_over_D50": 0.030883033017998995,
+  "maximum_rotation_deg": 0.0,
+  "finding": "The mobile-fibre stable timestep was smaller than in the fixed-fibre pilot, so the predeclared block budget expired before first contact. Physics and health guards remained intact.",
+  "authorized_revision": "increase_only_maximum_check_blocks_from_1600_to_3200",
+  "source_hashes": {
+    "result": "bcf993a4c09468971b8361e2c777eec7d35057dbae440977c53774935bbc5628",
+    "completion": "0e374248e3031834ce9e27ca4b67b4cdf1ecea63a4e0b52e5ac4cfdce54d3dd6",
+    "history": "b600ed19455d672954a118d017a7bdeabe7ab27f0e2c02c99c96f77b3bbd18e3"
+  },
+  "authority": {
+    "heldout_execution_authorized": false,
+    "reserve_execution_authorized": false,
+    "flow_execution_authorized": false,
+    "deformation_authorized": false
+  }
+}

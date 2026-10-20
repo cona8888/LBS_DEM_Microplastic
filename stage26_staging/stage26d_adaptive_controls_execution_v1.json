@@ -1,0 +1,154 @@
+{
+  "adaptive_equilibration": {
+    "maximum_blocks": 300,
+    "minimum_blocks_before_equilibrium_window": 60,
+    "required_consecutive_passing_blocks": 10
+  },
+  "authority": {
+    "deformation_coupled_flow_authorized": false,
+    "eight_or_more_fibre_execution_authorized": false,
+    "flow_execution_authorized": false,
+    "four_fibre_execution_authorized": false,
+    "network_export_execution_authorized": false,
+    "placement_generation_authorized": false,
+    "prefilter_yade_execution_authorized": true,
+    "production_parametric_study_authorized": false,
+    "transient_two_way_coupling_authorized": false,
+    "two_fibre_free_release_authorized": false
+  },
+  "candidate_contact_gates": {
+    "maximum_isolated_fibre_count": 0,
+    "minimum_declared_anchor_contacts_per_fibre_at_every_block": 1,
+    "minimum_distinct_sand_contacts_per_fibre_at_every_block": 2,
+    "required_declared_anchor_contacts_per_fibre_at_terminal_block": 2
+  },
+  "candidate_generation": {
+    "D50_m": 0.0008225865451029433
+  },
+  "claim_boundary": "Fixed-fibre 300-block control qualification for the Stage26d adaptive evaluator only; no release, promoted state, or flow.",
+  "continuous_engagement_gates": {
+    "maximum_isolated_fibre_count_at_every_block": 0,
+    "minimum_declared_anchor_contacts_per_fibre_at_every_block": 1,
+    "minimum_distinct_sand_contacts_per_fibre_at_every_block": 1
+  },
+  "equilibrium_window_gates": {
+    "maximum_cell_volume_relative_drift": 0.005,
+    "maximum_fibre_fibre_real_interaction_count": 0,
+    "maximum_interobject_penetration_over_smaller_radius": 0.02,
+    "maximum_intraclump_real_interaction_count": 0,
+    "maximum_principal_stress_error": 0.03,
+    "maximum_relative_mean_stress_error": 0.02,
+    "maximum_sand_displacement_over_D50": 0.1,
+    "maximum_sand_rattler_fraction": 0.35,
+    "maximum_unbalanced_force": 0.05,
+    "minimum_declared_anchor_contacts_per_fibre": 2,
+    "minimum_distinct_sand_contacts_per_fibre": 2,
+    "minimum_sand_contact_retention_fraction": 0.9,
+    "minimum_sand_coordination_excluding_rattlers": 3.0
+  },
+  "frozen_physics": {
+    "fibre_density_kg_m3": 940.0,
+    "fibre_member_radius_m": 5e-05,
+    "fibre_members": 37,
+    "fibre_target_mass_kg": 6.997520680643619e-09,
+    "gravity_m_s2": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "newton_damping": 0.35,
+    "plastic_friction_coefficient": 0.45,
+    "plastic_poisson": 0.25,
+    "plastic_young_pa": 53000000.0,
+    "target_mean_effective_stress_pa": 100.0,
+    "timestep_safety_coefficient": 0.2
+  },
+  "insertion_gate": {
+    "required_exact_contacts_per_fibre": 2
+  },
+  "network_export": {
+    "required_sand_contact_count": 361,
+    "required_sand_particle_count": 216
+  },
+  "prefilter": {
+    "all_fibres_fixed": true,
+    "blocks": 300,
+    "free_release": false,
+    "maximum_strain_rate_s_inv": 0.02,
+    "steps_per_block": 500
+  },
+  "sand_health_gates_at_terminal_block": {
+    "maximum_cell_volume_relative_drift": 0.005,
+    "maximum_interobject_penetration_over_smaller_radius": 0.02,
+    "maximum_principal_stress_error": 0.03,
+    "maximum_relative_mean_stress_error": 0.02,
+    "maximum_sand_displacement_over_D50": 0.1,
+    "maximum_sand_rattler_fraction": 0.35,
+    "maximum_unbalanced_force": 0.05,
+    "minimum_sand_contact_retention_fraction": 0.9,
+    "minimum_sand_coordination_excluding_rattlers": 3.0
+  },
+  "schema": "lbs.stage26d-adaptive-controls-execution.v1",
+  "sources": {
+    "common": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26b_revision2_prefilter_common_v1.py",
+    "common_sha256": "0d803b47807863e6e339d4cd0b209a30175425675c4bc12d8372f6c9db25a2d4",
+    "expected_yade_version": "2022.01a",
+    "network_export_completion": "C:/MATDEM_MICROPLASTIC/stage26_network_exports/stage26b_revision2_stage25_network_20260816/export_04/completion.json",
+    "network_export_completion_sha256": "4e1793183344e5a14f085fe6561af9834305a0ec275a18fc6c95c27acb8d77ee",
+    "normalized_manifest": "C:/MATDEM_MICROPLASTIC/stage26_placements/stage26c_revision3_fixed_prefilter_20260816/normalized_01/manifest.json",
+    "normalized_manifest_sha256": "e2753bdc7019cb1842e877b0182a52958c894f288742b22cffee22524b1dafa2",
+    "runner": "C:/MATDEM_MICROPLASTIC/stage26_staging/run_stage26b_revision2_fixed_prefilter_v1.py",
+    "runner_sha256": "cfaf4123b2bf8bf5ee82bf067b914d5593a2179714bf972c9ec3c290f7bdcfd4",
+    "stage25_checkpoint": "C:/MATDEM_MICROPLASTIC/stage25_runs/stage25a_pure_sand_mechanics_20260813/qualification_04/mu_0.60/load_bearing_state.yade.gz",
+    "stage25_checkpoint_sha256": "598107294f82d3a5f317f02fc87599d324fc614bb02bfd5048f6a932cced4aad",
+    "stage26d_adaptive_common": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26d_adaptive_common_v1.py",
+    "stage26d_adaptive_common_sha256": "4f13ad3895444bdbb5750a6e65437d0ce7fb9258c1c27e5b879a6d9ccae67a83",
+    "stage26d_design_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26d_adaptive_equilibration_20260816/design_checkpoint_02/checkpoint_manifest.json",
+    "stage26d_design_checkpoint_sha256": "f11af5c95974c8dcf02eb4c83188ea8553bda813e5b98815fe42c613b59c02ec",
+    "stage26d_evaluator_adapter": "C:/MATDEM_MICROPLASTIC/stage26_staging/evaluate_stage26d_adaptive_prefilter_v2.py",
+    "stage26d_evaluator_adapter_sha256": "797384bf9a764ad13ac7afc815515eb0d97142edb1899ef3980e06aaaf1f0b09",
+    "stage26d_evaluator_core": "C:/MATDEM_MICROPLASTIC/stage26_staging/evaluate_stage26d_adaptive_prefilter_v1.py",
+    "stage26d_evaluator_core_sha256": "0659c6292cd70811a79703a955b4b04dec7632fefb0a3e486182235ff621effe",
+    "temporal_common": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26c_prefilter_common_v2.py",
+    "temporal_common_sha256": "8d0028b51f420781eb283244a91ef4d01e952f9c4f1aa91666733a25be2674f0",
+    "temporal_design_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26c_revision3_fixed_prefilter_20260816/temporal_gate_design_checkpoint_02/checkpoint_manifest.json",
+    "temporal_design_checkpoint_sha256": "4cb7d673cd88e661bb8a12afb674988d05983f39fad718c02d4d320c0462529f",
+    "temporal_evaluator": "C:/MATDEM_MICROPLASTIC/stage26_staging/evaluate_stage26c_temporal_prefilter_v2.py",
+    "temporal_evaluator_sha256": "35cb15e373ea924e2e1382d2f5282c0f0238354d26cfe4e560b3659753466522",
+    "visual_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26b_revision3_joint_placement_20260816/visual_checkpoint_01/checkpoint_manifest.json",
+    "visual_checkpoint_sha256": "c6cadd8e7d89b8867b3d14f21c70032772c109f11897b225c062878e21ea83d6"
+  },
+  "status": "authorized_stage26b_revision2_fixed_prefilter",
+  "temporal_contact_gates": {
+    "maximum_isolated_fibre_count_at_every_block": 0,
+    "required_blocks": 60,
+    "terminal_minimum_declared_anchor_contacts_per_fibre": 2,
+    "terminal_minimum_distinct_sand_contacts_per_fibre": 2,
+    "terminal_window_blocks_inclusive": [
+      51,
+      60
+    ],
+    "transient_minimum_declared_anchor_contacts_per_fibre": 1,
+    "transient_minimum_distinct_sand_contacts_per_fibre": 1
+  },
+  "trials": [
+    {
+      "fibre_count": 1,
+      "minimum_anchor_degree": 4,
+      "placement": "C:/MATDEM_MICROPLASTIC/stage26_placements/stage26c_revision3_fixed_prefilter_20260816/normalized_01/positive_control.json",
+      "placement_sha256": "e0deba8bde9b2e44e5b458968d9b25a09e28e649eb893d8a70cc6617dd92c20c",
+      "record_type": "control",
+      "stage26d_role": "positive_control",
+      "trial_id": "positive_stage26a"
+    },
+    {
+      "fibre_count": 2,
+      "minimum_anchor_degree": 0,
+      "placement": "C:/MATDEM_MICROPLASTIC/stage26_placements/stage26c_revision3_fixed_prefilter_20260816/normalized_01/negative_control.json",
+      "placement_sha256": "6b85c2eaed4d829631c1dd093d15610b50cf34cc4f3a67bfd6a3bb65a9adf360",
+      "record_type": "control",
+      "stage26d_role": "negative_control",
+      "trial_id": "negative_stage26b_failure"
+    }
+  ]
+}

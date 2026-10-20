@@ -1,0 +1,73 @@
+"""Stage26o adapter using direct wall reactions as the physical stress observable."""
+from __future__ import print_function
+
+import importlib.util
+import os
+import sys
+
+HERE = os.path.dirname(os.path.abspath(os.environ.get("STAGE26O_CONTROL_SCRIPT", __file__)))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+CORE_PATH = os.path.join(HERE, "run_stage26o_clean_sand_control_v1.py")
+SPEC = importlib.util.spec_from_file_location("stage26o_control_core_v1", CORE_PATH)
+core = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(core)
+for symbol, value in list(globals().items()):
+    if not symbol.startswith("__") and symbol not in {"core", "SPEC"}:
+        core.__dict__.setdefault(symbol, value)
+
+_base_load_json = core.load_json
+_base_diagnostic = core.diagnostic
+_strict_final_gate = core.final_gate
+_final_hold_walls_frozen = False
+
+
+def calibrated_load_json(path):
+    cfg = _base_load_json(path)
+    confinement = cfg.get("confinement", {})
+    if "controller_internal_target_pa" in confinement:
+        confinement["target_mean_wall_stress_pa_compression_positive"] = float(confinement["controller_internal_target_pa"])
+    return cfg
+
+
+def direct_reaction_diagnostic(record, phase, phase_index, cfg, triax, sand_ids, solid_volume, total_weight):
+    row = _base_diagnostic(record, phase, phase_index, cfg, triax, sand_ids, solid_volume, total_weight)
+    dx, dy, dz = row["wall_dimensions_m"]
+    stresses = [
+        abs(float(core.O.forces.f(triax.wall_right_id)[0])) / (dy * dz),
+        abs(float(core.O.forces.f(triax.wall_top_id)[1])) / (dx * dz),
+        abs(float(core.O.forces.f(triax.wall_front_id)[2])) / (dx * dy),
+    ]
+    target = float(cfg["confinement"]["physical_reaction_target_pa"])
+    mean = sum(stresses) / 3.0
+    row["principal_wall_stress_pa_compression_positive"] = stresses
+    row["mean_wall_stress_pa_compression_positive"] = mean
+    row["relative_mean_wall_stress_error"] = abs(mean - target) / target
+    row["maximum_principal_wall_stress_error"] = max(abs(value - target) / target for value in stresses)
+    return row
+
+
+def phase_aware_gate(row, cfg):
+    global _final_hold_walls_frozen
+    checks = _strict_final_gate(row, cfg)
+    if row.get("phase") == "gravity_plus_wall_confinement":
+        limits = cfg["confinement_transition"]
+        checks["mean_stress"] = row["relative_mean_wall_stress_error"] <= limits["maximum_relative_mean_wall_stress_error"]
+        checks["principal_stress"] = row["maximum_principal_wall_stress_error"] <= limits["maximum_principal_wall_stress_error"]
+        checks["unbalanced_force"] = row["unbalanced_force"] <= limits["maximum_unbalanced_force"]
+        checks["normalized_kinetic_energy"] = row["normalized_kinetic_energy_pV"] <= limits["maximum_normalized_kinetic_energy_pV"]
+    elif row.get("phase") == "zero_gravity_final_hold" and not _final_hold_walls_frozen:
+        controllers = [engine for engine in core.O.engines if isinstance(engine, core.TriaxialStressController)]
+        if len(controllers) != 1:
+            raise RuntimeError("expected exactly one triaxial controller before fixed-volume hold")
+        controllers[0].dead = True
+        _final_hold_walls_frozen = True
+    return checks
+
+
+core.load_json = calibrated_load_json
+core.diagnostic = direct_reaction_diagnostic
+core.final_gate = phase_aware_gate
+
+if __name__ == "__main__":
+    core.main()

@@ -1,0 +1,21 @@
+{
+  "schema": "lbs.stage26i-post-run-finalization-failure.v1",
+  "passed": true,
+  "status": "simulation_reached_physical_guard_but_bundle_finalization_failed",
+  "rejected_design": "C:/MATDEM_MICROPLASTIC/stage26_designs/stage26i_radius_preload_screen_20260817/design_01",
+  "attempted_output": "C:/MATDEM_MICROPLASTIC/stage26_runs/stage26i_radius_preload_screen_20260817/screen_01/candidate07_preload_1.0pct",
+  "trial_id": "candidate07_preload_1.0pct",
+  "last_observed_block": 78,
+  "last_observed_contacts_by_fibre": [1, 4],
+  "physical_guard_reached": true,
+  "result_bundle_created": false,
+  "incomplete_history_header_sha256": "5146e7f2fe65b618bbaa13d465685e451d69c477859717f9620560aaf83405f5",
+  "reason": "The shared CSV writer treated Stage26h fibre-motion columns as mandatory although Stage26i rows intentionally omit them.",
+  "physics_or_gate_change_required": false,
+  "correction": "Serialize optional history columns only when present, rebind the helper hash, and rerun under a fresh immutable output identity.",
+  "authority": {
+    "heldout_execution_authorized": false,
+    "reserve_execution_authorized": false,
+    "flow_execution_authorized": false
+  }
+}

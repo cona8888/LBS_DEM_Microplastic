@@ -1,0 +1,92 @@
+{
+  "schema": "lbs.stage26b-revision2-placement-generation-preparation.v1",
+  "status": "placement_generation_preparation_only",
+  "purpose": "Freeze the deterministic source contract and output contract for twelve load-bearing-network-screened two-F37 placement candidates.",
+  "claim_boundary": "Offline placement-generator preparation only. No candidate generation, YADE execution, fibre conditioning or release, four-fibre execution, permeability, deformation, migration, polymer calibration, or coupled-flow result.",
+  "sources": {
+    "design_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26b_tier1_placement_stability_revision2_20260814/design_checkpoint_01/checkpoint_manifest.json",
+    "design_checkpoint_sha256": "7d31717c744a01dcae456800fb9be2f3b7951b07e81aae54fdc6b31e7ac0a200",
+    "design_config": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26b_tier1_placement_stability_revision2_design_v1.json",
+    "design_config_sha256": "94213a1271d7c538c2f1a538cde493d56d25d2befbff90438185a94e183d7110",
+    "resolved_design": "C:/MATDEM_MICROPLASTIC/stage26_designs/stage26b_tier1_placement_stability_revision2_20260814/design_02/resolved_design.json",
+    "resolved_design_sha256": "b51592ea4df8ce8b66ecf17b220025bd9db325c7e20269b9f6425924f17ed7f9",
+    "trial_schedule": "C:/MATDEM_MICROPLASTIC/stage26_designs/stage26b_tier1_placement_stability_revision2_20260814/design_02/trial_schedule.csv",
+    "trial_schedule_sha256": "d88eaa5d69860618e2cbf6cb5a7e06a45b4c97d5e6c6ae4e6c624891854e94ee",
+    "network_export_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26b_tier1_placement_stability_revision2_20260816/network_export_checkpoint_01/checkpoint_manifest.json",
+    "network_export_checkpoint_sha256": "8279d2eee70b099d20245da2c09804e40cc11c92cbe2ba9cc36a4a1c36c2db07",
+    "network": "C:/MATDEM_MICROPLASTIC/stage26_network_exports/stage26b_revision2_stage25_network_20260816/export_04/network.json",
+    "network_sha256": "6b1e0912114742f23afc6391539dd373dbe4a85cb6aabc39658fe62a84c07984",
+    "core_count_erratum_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26b_tier1_placement_stability_revision2_20260816/core_count_erratum_checkpoint_01/checkpoint_manifest.json",
+    "core_count_erratum_checkpoint_sha256": "22b71292258a984321972cd225084971c2e52fff54da47cd9fe9e91f29c2377f",
+    "stage26a_design_config": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26a_dry_f37_insertion_design_v1.json",
+    "stage26a_design_config_sha256": "6858247c19fca9b257c2c77ecc76f2d50f9435841103ee6c3676e7555e2464ca",
+    "f37_geometry_review": "C:/Users/wonjuncha-admin/Documents/Codex/2026-07-19/skill-creator-c-users-wonjuncha-admin/yade_benchmark/lbs_calibration/runs/stage8_shape_fibre_visual_gate_20260722/geometry_review.json",
+    "f37_geometry_review_sha256": "ad97e11d217f65a67fb849f5a5f8a93c84f96063ca6853e74a4342dec052b762",
+    "legacy_planner_lineage": "C:/MATDEM_MICROPLASTIC/stage26_staging/plan_stage26b_tier1_multifibre_v1.py",
+    "legacy_planner_lineage_sha256": "8982ea323f8641e9edf264e4102db71e50d7a279548418b9ecf628da81e73a12"
+  },
+  "corrected_network_baseline": {
+    "sand_particle_count": 216,
+    "real_sand_sand_contact_count": 361,
+    "iterative_core_degree_threshold": 2,
+    "load_bearing_core_count": 175,
+    "supersedes_design_core_count_only": 180
+  },
+  "generator_contract": {
+    "future_source": "C:/MATDEM_MICROPLASTIC/stage26_staging/generate_stage26b_revision2_placements_v1.py",
+    "execution_runtime": "host Python with NumPy; YADE must not be imported or invoked",
+    "f37_template_id": "f37_kinked_ar10",
+    "fibre_count_per_candidate": 2,
+    "members_per_fibre": 37,
+    "member_radius_m": 0.00005,
+    "anchor_member_indices": [0, 36],
+    "target_anchor_penetration_over_member_radius": 0.005,
+    "maximum_sand_fibre_penetration_over_member_radius": 0.02,
+    "anchor_pair_distance_m": [0.00135, 0.00225],
+    "anchor_must_be_in_degree2_core": true,
+    "minimum_anchor_network_degree": 3,
+    "preferred_anchor_network_degree": 4,
+    "maximum_anchor_multiplicity_across_fibres": 1,
+    "initial_distinct_sand_contacts_per_fibre": [2, 2],
+    "maximum_initial_force_residual_relative": 0.05,
+    "maximum_initial_moment_residual_relative": 0.02,
+    "minimum_initial_fibre_fibre_clearance_m": 0.00041129327255147165,
+    "fibres_wholly_inside_primary_cell": true,
+    "zero_initial_fibre_fibre_overlap": true,
+    "maximum_trials_per_candidate": 400000,
+    "preserve_every_attempt_and_rejection": true,
+    "forbid_budget_extension_after_outcome_inspection": true,
+    "periodic_minimum_image_for_clearance": true,
+    "direct_primary_cell_anchor_span_for_wholly_inside_geometry": true
+  },
+  "deterministic_schedule": {
+    "candidate_count": 12,
+    "seed_base": 202608142100,
+    "seed_stride": 17,
+    "candidate_ids": [
+      "stage26b_f002_revision2_candidate_01", "stage26b_f002_revision2_candidate_02",
+      "stage26b_f002_revision2_candidate_03", "stage26b_f002_revision2_candidate_04",
+      "stage26b_f002_revision2_candidate_05", "stage26b_f002_revision2_candidate_06",
+      "stage26b_f002_revision2_candidate_07", "stage26b_f002_revision2_candidate_08",
+      "stage26b_f002_revision2_candidate_09", "stage26b_f002_revision2_candidate_10",
+      "stage26b_f002_revision2_candidate_11", "stage26b_f002_revision2_candidate_12"
+    ]
+  },
+  "immutable_output_contract": {
+    "future_output_root": "C:/MATDEM_MICROPLASTIC/stage26_placements/stage26b_tier1_placement_stability_revision2_20260816/candidate_generation_01",
+    "per_candidate_files": ["placement.json", "attempts.csv.gz", "completion.json"],
+    "campaign_files": ["candidate_index.csv", "completion.json"],
+    "partial_or_budget_exhausted_candidates_must_be_published": true,
+    "no_overwrite": true
+  },
+  "authority": {
+    "placement_generator_source_implementation_authorized": true,
+    "placement_generator_source_audit_authorized": true,
+    "placement_generation_authorized": false,
+    "prefilter_yade_execution_authorized": false,
+    "two_fibre_free_release_authorized": false,
+    "four_fibre_execution_authorized": false,
+    "flow_execution_authorized": false,
+    "production_parametric_study_authorized": false
+  }
+}

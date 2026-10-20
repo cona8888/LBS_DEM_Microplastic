@@ -1,0 +1,79 @@
+{
+  "schema": "lbs.stage26b-tier1-revision2-source-interface.v1",
+  "status": "source_implementation_and_audit_only",
+  "claim_boundary": "Source implementation and non-YADE audit only. No contact-network export, placement generation, YADE stepping, fixed conditioning, free release, four-fibre execution, flow, deformation, migration, permeability or coupled-physics result.",
+  "sources": {
+    "design_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26b_tier1_placement_stability_revision2_20260814/design_checkpoint_01/checkpoint_manifest.json",
+    "design_checkpoint_sha256": "7d31717c744a01dcae456800fb9be2f3b7951b07e81aae54fdc6b31e7ac0a200",
+    "design_config": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26b_tier1_placement_stability_revision2_design_v1.json",
+    "design_config_sha256": "94213a1271d7c538c2f1a538cde493d56d25d2befbff90438185a94e183d7110",
+    "resolved_design": "C:/MATDEM_MICROPLASTIC/stage26_designs/stage26b_tier1_placement_stability_revision2_20260814/design_02/resolved_design.json",
+    "resolved_design_sha256": "b51592ea4df8ce8b66ecf17b220025bd9db325c7e20269b9f6425924f17ed7f9",
+    "stage25_checkpoint": "C:/MATDEM_MICROPLASTIC/stage25_runs/stage25a_pure_sand_mechanics_20260813/qualification_04/mu_0.60/load_bearing_state.yade.gz",
+    "stage25_checkpoint_sha256": "598107294f82d3a5f317f02fc87599d324fc614bb02bfd5048f6a932cced4aad",
+    "stage25_result": "C:/MATDEM_MICROPLASTIC/stage25_runs/stage25a_pure_sand_mechanics_20260813/qualification_04/mu_0.60/result.json",
+    "stage25_result_sha256": "e98d398c43eb17599ee491967a565c4bbffc2467908585ccff469a8fa024f5e1",
+    "stage26b_v1_runner_lineage": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26b_yade_tier1_dry_relaxation_v1.py",
+    "stage26b_v1_runner_lineage_sha256": "2e6d3e7a2f0bdecf67e8be47946e7f4fbd5e05a82aa89e212c7f413c41523b5a",
+    "stage25_contact_exporter_lineage": "C:/MATDEM_MICROPLASTIC/stage25_staging/export_stage25a_selected_contacts_v1.py",
+    "stage25_contact_exporter_lineage_sha256": "f43716e10217a189b3dfec2b53edb37ef5c9c7b783b56a4a7ec46eb4cbffbcd1"
+  },
+  "future_network_export_config_contract": {
+    "required_status": "authorized_stage26b_revision2_network_export",
+    "required_authority": {
+      "network_export_execution_authorized": true,
+      "placement_generation_authorized": false,
+      "prefilter_yade_execution_authorized": false,
+      "two_fibre_free_release_authorized": false,
+      "four_fibre_execution_authorized": false,
+      "flow_execution_authorized": false
+    },
+    "expected_yade_version": "2022.01a",
+    "required_sand_particle_count": 216,
+    "required_sand_contact_count": 361,
+    "required_load_bearing_particle_count": 180,
+    "core_degree_threshold": 2
+  },
+  "future_prefilter_config_contract": {
+    "required_status": "authorized_stage26b_revision2_fixed_prefilter",
+    "required_authority": {
+      "network_export_execution_authorized": false,
+      "placement_generation_authorized": false,
+      "prefilter_yade_execution_authorized": true,
+      "two_fibre_free_release_authorized": false,
+      "four_fibre_execution_authorized": false,
+      "flow_execution_authorized": false
+    },
+    "expected_yade_version": "2022.01a",
+    "steps_per_block": 500,
+    "blocks": 10,
+    "all_fibres_fixed": true,
+    "free_release": false,
+    "required_trial_fields": [
+      "run_order",
+      "record_type",
+      "trial_id",
+      "candidate_index",
+      "fibre_count",
+      "placement",
+      "placement_sha256",
+      "minimum_anchor_degree"
+    ],
+    "candidate_requires_passed_control_checkpoint": true
+  },
+  "authority": {
+    "source_file_creation_authorized": true,
+    "non_yade_unit_tests_authorized": true,
+    "source_audit_authorized": true,
+    "network_export_execution_authorized": false,
+    "placement_generation_authorized": false,
+    "prefilter_yade_execution_authorized": false,
+    "two_fibre_free_release_authorized": false,
+    "four_fibre_execution_authorized": false,
+    "eight_or_more_fibre_execution_authorized": false,
+    "flow_execution_authorized": false,
+    "deformation_coupled_flow_authorized": false,
+    "transient_two_way_coupling_authorized": false,
+    "production_parametric_study_authorized": false
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "lbs.stage26h-pre-model-load-integration-failure.v1",
+  "passed": true,
+  "status": "failed_before_model_load",
+  "rejected_design": "C:/MATDEM_MICROPLASTIC/stage26_designs/stage26h_bounded_mobile_conditioning_20260817/design_02",
+  "attempted_output": "C:/MATDEM_MICROPLASTIC/stage26_runs/stage26h_bounded_mobile_conditioning_20260817/pilot_01/candidate07",
+  "simulation_steps_executed": 0,
+  "output_directory_created": false,
+  "reason": "Importing the frozen Stage26g runner executed its unguarded main routine and requested STAGE26G_CAGE_CONFIG before Stage26h could load a model.",
+  "physics_or_gate_change_required": false,
+  "correction": "Move only the frozen diagnostic functions into a side-effect-free Stage26h helper, bind its hash, and relaunch under a fresh design/output identity.",
+  "authority": {
+    "heldout_execution_authorized": false,
+    "reserve_execution_authorized": false,
+    "flow_execution_authorized": false
+  }
+}

@@ -1,0 +1,23 @@
+"""Local path-consistency (Picard) update for cases 9 and 12."""
+import hashlib,json,time
+from pathlib import Path
+import numpy as np
+from scipy.interpolate import PchipInterpolator
+import open_grains_ellipsoid_v1 as flow
+import planar_passage_stepper_v1 as stepper
+R=Path(__file__).resolve().parents[1];T=R/'stage36_evaluations/stage36cj_targeted_refinement_20260911/run_01';O=R/'stage36_evaluations/stage36ck_throat_picard_20260911/run_01';O.mkdir(parents=True,exist_ok=False)
+update_x=[-.7,0,.0875,.175,.2625,.35,.7];fresh_x=[-.35,.04375,.13125,.21875,.30625,.525]
+contract={'role':'local fixed-point path consistency for Stage36CJ residual angular errors','cases':[9,12],'updated_training_x':update_x,'fresh_validation_x':fresh_x,'integration_dx':[.2,.1,.05],
+ 'gates':{'axial_relative_error_max':.01,'transverse_absolute_error_max':.002,'angular_absolute_error_max':.003,'boundary_error_max':.001,'force_free_residual_max':1e-10,'fine_vs_medium_event_time_relative_max':.002},'gates_unchanged':True}
+(O/'contract.json').write_text(json.dumps(contract,indent=2));sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();inputs=[Path(__file__),Path(flow.__file__),Path(stepper.__file__),T/'results.json',O/'contract.json'];before={str(p):sha(p) for p in inputs};assert not json.loads((T/'results.json').read_text())['passed'];rows=[];start=time.perf_counter()
+for case in contract['cases']:
+ prev=json.loads((T/f'case_{case:02}.json').read_text());hist=prev['trajectories']['0.05']['history'];hx=np.array([s['x'] for s in hist]);hy=np.array([s['y'] for s in hist]);ht=np.unwrap(np.array([s['theta'] for s in hist]));pool={round(s['x'],10):s for s in prev['samples']}
+ for q in update_x:
+  y=float(np.interp(q,hx,hy));theta=float(np.interp(q,hx,ht));c,s=np.cos(theta),np.sin(theta);M=np.array([[c,-s,0],[s,c,0],[0,0,1.]]);tick=time.perf_counter();z,h=flow.solve([q,y,0],M,384,axes=[.2,.1,.1]);pool[round(q,10)]={'x':q,'y':y,'theta':theta,'n':384,'motion':[float(z[0]),float(z[1]),float(z[5])],**h,'seconds':time.perf_counter()-tick,'source':'stage36ck_picard'};print(json.dumps({'case':case,'update_x':q}),flush=True)
+ samples=[pool[k] for k in sorted(pool)];x=np.array([s['x'] for s in samples]);m=np.array([s['motion'] for s in samples]);fits=[PchipInterpolator(x,m[:,j],extrapolate=False) for j in range(3)]
+ def provider(q,y,theta):return np.array([f(q) for f in fits],float)
+ traj={str(dx):stepper.integrate(provider,[.2,.1,.1],prev['trajectories']['0.05']['history'][0]['y'],prev['trajectories']['0.05']['history'][0]['theta'],dx) for dx in contract['integration_dx']};fine=traj['0.05']['history'];fx=np.array([s['x'] for s in fine]);fy=np.array([s['y'] for s in fine]);ft=np.unwrap(np.array([s['theta'] for s in fine]));validation=[]
+ for q in fresh_x:
+  y=float(np.interp(q,fx,fy));theta=float(np.interp(q,fx,ft));c,s=np.cos(theta),np.sin(theta);M=np.array([[c,-s,0],[s,c,0],[0,0,1.]]);tick=time.perf_counter();z,h=flow.solve([q,y,0],M,384,axes=[.2,.1,.1]);p=provider(q,y,theta);e={'axial_relative':float(abs(p[0]-z[0])/abs(z[0])),'transverse_absolute':float(abs(p[1]-z[1])),'angular_absolute':float(abs(p[2]-z[5]))};passed=e['axial_relative']<=.01 and e['transverse_absolute']<=.002 and e['angular_absolute']<=.003 and max(h['grain_boundary_error'],h['fibre_boundary_error'])<=.001 and h['force_free_residual']<=1e-10;item={'x':q,'y':y,'theta':theta,'n':384,'predicted':p.tolist(),'direct':[float(z[0]),float(z[1]),float(z[5])],'errors':e,**h,'passed':bool(passed),'seconds':time.perf_counter()-tick};validation.append(item);print(json.dumps({'case':case,'fresh_x':q,'passed':bool(passed),'errors':e}),flush=True)
+ times={k:v['history'][-1]['t'] for k,v in traj.items()};conv=abs(times['0.05']-times['0.1'])/abs(times['0.05']);row={'case':case,'samples':samples,'trajectories':traj,'validation':validation,'event_times':times,'event_time_fine_vs_medium_relative':float(conv),'passed':bool(all(v['passed'] for v in validation) and conv<=.002 and traj['0.05']['status']=='released')};rows.append(row);(O/f'case_{case:02}.json').write_text(json.dumps(row,indent=2))
+checks={'all_12_fresh_poses_pass':all(v['passed'] for r in rows for v in r['validation']),'both_integrations_converged':all(r['event_time_fine_vs_medium_relative']<=.002 for r in rows),'both_released':all(r['trajectories']['0.05']['status']=='released' for r in rows),'inputs_unchanged':before=={str(p):sha(p) for p in inputs}};result={'passed':all(checks.values()),'checks':checks,'rows':rows,'runtime_seconds':time.perf_counter()-start,'input_hashes':before};(O/'results.json').write_text(json.dumps(result,indent=2));print(json.dumps({'passed':result['passed'],'checks':checks,'seconds':result['runtime_seconds']}))

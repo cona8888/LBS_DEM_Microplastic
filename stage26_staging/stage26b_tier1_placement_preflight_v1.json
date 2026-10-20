@@ -1,0 +1,57 @@
+{
+  "schema": "lbs.stage26b-tier1-placement-preflight.v1",
+  "status": "authorized_tier1_placement_preflight_only",
+  "claim_boundary": "Geometry-only preflight for two- and four-fibre dry Stage26b cases. No DEM relaxation, physical mixing, permeability, flow, migration, polymer calibration or coupled-physics claim.",
+  "sources": {
+    "stage26b_design_config": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26b_dry_multifibre_design_v1.json",
+    "stage26b_design_config_sha256": "faf2e4360789bcda46e2f116220b4b899744fffff347da55cddc5acfe891a54b",
+    "stage26b_resolved_design": "C:/MATDEM_MICROPLASTIC/stage26_designs/stage26b_dry_multifibre_20260813/design_01/resolved_design.json",
+    "stage26b_resolved_design_sha256": "80c8de7f6472d6a36fc60440e77ec016495aba73ec4eb9b1ea054cecf939b03e",
+    "stage26a_design_config": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26a_dry_f37_insertion_design_v1.json",
+    "stage26a_design_config_sha256": "6858247c19fca9b257c2c77ecc76f2d50f9435841103ee6c3676e7555e2464ca",
+    "stage26a_base_planner": "C:/MATDEM_MICROPLASTIC/stage26_staging/plan_stage26a_f37_placement_v1.py",
+    "stage26a_base_planner_sha256": "47367743f2d9eb2137b9a44ff7dc6269a9f5a819a6a65eb9604a7349c694abbf"
+  },
+  "cases": [
+    {"case_id": "stage26b_f002_A", "fibre_count": 2, "placement_block": "A", "placement_seed": 2026082821, "dry_mass_percent": 0.009198537124141388},
+    {"case_id": "stage26b_f004_A", "fibre_count": 4, "placement_block": "A", "placement_seed": 2026083021, "dry_mass_percent": 0.01839538214222729}
+  ],
+  "search": {
+    "anchor_member_indices": [0, 36],
+    "target_anchor_penetration_over_member_radius": 0.005,
+    "maximum_sand_fibre_penetration_over_member_radius": 0.02,
+    "pair_distance_minimum_m": 0.00135,
+    "pair_distance_maximum_m": 0.00225,
+    "rolls_per_pair": 180,
+    "maximum_trials_per_fibre": 200000,
+    "minimum_distinct_initial_sand_contacts_per_fibre": 2,
+    "maximum_distinct_initial_sand_contacts_per_fibre": 2,
+    "maximum_initial_normal_force_residual_relative": 0.10,
+    "maximum_initial_normal_moment_residual_relative": 0.10,
+    "preferred_initial_normal_force_residual_relative": 0.075,
+    "preferred_initial_normal_moment_residual_relative": 0.05,
+    "require_fibres_wholly_inside_primary_cell": true,
+    "require_zero_initial_fibre_fibre_overlap": true,
+    "maximum_anchor_multiplicity_across_fibres": 2
+  },
+  "acceptance": {
+    "exact_fibre_count_required": true,
+    "members_per_fibre": 37,
+    "minimum_distinct_contacts_per_fibre": 2,
+    "maximum_distinct_contacts_per_fibre": 2,
+    "maximum_sand_fibre_penetration_over_member_radius": 0.02,
+    "minimum_fibre_fibre_clearance_m": 0.0,
+    "maximum_anchor_multiplicity": 2,
+    "maximum_force_residual_relative_per_fibre": 0.10,
+    "maximum_moment_residual_relative_per_fibre": 0.10
+  },
+  "authority": {
+    "placement_generation_authorized": true,
+    "rendering_authorized": true,
+    "multi_fibre_yade_execution_authorized": false,
+    "flow_execution_authorized": false,
+    "transient_two_way_coupling_authorized": false,
+    "deformation_coupled_flow_authorized": false,
+    "production_parametric_study_authorized": false
+  }
+}

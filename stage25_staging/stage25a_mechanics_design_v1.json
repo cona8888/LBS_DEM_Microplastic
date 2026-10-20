@@ -1,0 +1,62 @@
+{
+  "schema": "lbs.stage25a-load-bearing-pure-sand-pilot.v1",
+  "status": "authorized_bounded_pure_sand_mechanics_qualification",
+  "research_question": "Can the Stage23 LBS PSD form a reproducible load-bearing very-loose periodic packing at low effective stress?",
+  "claim_boundary": "DEM state-preparation and numerical qualification only; no material calibration, fibre mechanics, permeability prediction, transient FSI, or deformation-coupled flow.",
+  "source": {
+    "stage24e_evaluation": "C:/Users/wonjuncha-admin/Documents/Codex/2026-07-19/skill-creator-c-users-wonjuncha-admin/yade_benchmark/lbs_calibration/runs/stage24e_lbs_f37_selected_cpd4_gpu_20260812/evaluation_01/evaluation.json",
+    "stage24e_evaluation_sha256": "034e80d7e5ddfd9f6c29dc93e3b69bb8816ecd904b31a27dfa645de0d5cc3fcf",
+    "stage23a_primary_preparation": "C:/Users/wonjuncha-admin/Documents/Codex/2026-07-19/skill-creator-c-users-wonjuncha-admin/yade_benchmark/lbs_calibration/runs/stage23a_clean_lbs_reported_quantile_psd_20260809/geometry_n216_s1/preparation_result.json",
+    "stage23a_primary_preparation_sha256": "ea0951d6b5da6163a986077ff96af7186f777f7b08508b5299b4ca2b84590bda",
+    "expected_yade_version": "2022.01a"
+  },
+  "sand": {
+    "particle_count": 216,
+    "random_seed": 202608231,
+    "density_kg_m3": 2650.0,
+    "psd_diameters_m": [0.0006, 0.00065, 0.00082, 0.000897, 0.00118],
+    "psd_cumulative_mass_fractions": [0.0, 0.1, 0.5, 0.6, 1.0],
+    "distribute_mass": true,
+    "shape": "spheres"
+  },
+  "contacts": {
+    "law": "FrictMat_CundallStrack_linear",
+    "young_pa": 53000000.0,
+    "poisson": 0.25,
+    "preparation_friction_coefficients": [0.3, 0.45, 0.6],
+    "note": "Preparation surrogate only; not an LBS stiffness or strength calibration."
+  },
+  "preparation": {
+    "periodic": true,
+    "initial_void_ratio": 4.0,
+    "target_mean_effective_stress_pa_compression_positive": 100.0,
+    "gravity_m_s2": [0.0, 0.0, 0.0],
+    "newton_damping": 0.35,
+    "maximum_strain_rate_s_inv": 0.2,
+    "steps_per_check_block": 1000,
+    "maximum_check_blocks": 1400,
+    "estimated_inertial_number_at_controller_cap": 0.0008445,
+    "required_consecutive_pass_blocks": 5,
+    "timestep_safety_coefficient": 0.4
+  },
+  "reference_state": {
+    "void_ratio": 0.744,
+    "physical_interpretation": "very loose state after fluidization and settling; low stress selected to match the order of self-weight effective stress in a 20 mm specimen"
+  },
+  "acceptance": {
+    "maximum_relative_mean_stress_error": 0.02,
+    "maximum_unbalanced_force": 0.02,
+    "maximum_normalized_kinetic_energy_pV": 1e-5,
+    "minimum_coordination_excluding_rattlers": 3.0,
+    "maximum_rattler_fraction": 0.35,
+    "maximum_overlap_over_smaller_radius": 0.01,
+    "maximum_absolute_void_ratio_difference_from_reference": 0.05,
+    "required_particle_count": 216
+  },
+  "promotion": {
+    "stage25a_execution_authorized": true,
+    "fibre_mechanics_authorized": false,
+    "flow_authorized": false,
+    "deformation_coupled_flow_authorized": false
+  }
+}

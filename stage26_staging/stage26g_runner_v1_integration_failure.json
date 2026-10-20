@@ -1,0 +1,18 @@
+{
+  "schema": "lbs.stage26g-runner-integration-failure.v1",
+  "passed": true,
+  "status": "frozen_pre_execution_import_failure",
+  "affected_trial": "stage26f_cage_candidate_06_development",
+  "simulation_steps_executed": 0,
+  "case_output_created": false,
+  "failure_classification": "software integration defect",
+  "cause": "The mechanical Stage26e-to-Stage26g source derivation renamed the imported stage26e_capture_common_v1 module to a nonexistent stage26g_capture_common_v1 module.",
+  "runner_v1_sha256": "030eabe07b45b6db55803103e77dbabb62c8ef1e9a92d484057741dc40ab439a",
+  "launch_log_sha256": "ab4de5cc8f8c9fd42ce8ca967c53db627852d48ed876e336b3de366855f87874",
+  "authority": {
+    "runner_v1_rerun_authorized": false,
+    "runner_v2_derivation_authorized": true,
+    "free_release_authorized": false,
+    "flow_authorized": false
+  }
+}

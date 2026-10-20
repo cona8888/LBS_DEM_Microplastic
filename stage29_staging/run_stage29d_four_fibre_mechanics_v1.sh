@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+export STAGE29D_CONFIG=/mnt/c/MATDEM_MICROPLASTIC/stage29_designs/stage29d_shared_pair_context_qualification_20260825/mechanics_preflight_01/config.json
+export STAGE29D_HANDOFF=/mnt/c/MATDEM_MICROPLASTIC/stage29_evaluations/stage29d_shared_pair_context_qualification_20260825/mechanics_release_01/handoff.json
+export STAGE29D_OUTPUT=/mnt/c/MATDEM_MICROPLASTIC/stage29_runs/stage29d_shared_pair_context_qualification_20260825/mechanics_01
+exec /usr/bin/yade -n -x /mnt/c/MATDEM_MICROPLASTIC/stage29_designs/stage29d_shared_pair_context_qualification_20260825/mechanics_runner_01/run_stage29d_four_fibre_mechanics_v1.py

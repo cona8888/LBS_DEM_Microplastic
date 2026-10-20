@@ -1,0 +1,65 @@
+{
+  "date": "2026-09-17",
+  "purpose": "Publication planning and source selection only; no manuscript, figures, model calibration or simulation dispatch.",
+  "plan": "C:/MATDEM_MICROPLASTIC/PUBLICATION_PLAN.md",
+  "panels": [
+    {
+      "figure": 1,
+      "role": "Current model geometry and comparison contract",
+      "sources": [
+        "C:/MATDEM_MICROPLASTIC/stage133_designs/cpd6_response_refinement_20260916/design_01.json",
+        "C:/MATDEM_MICROPLASTIC/stage134_designs/sphere_combined_budget_refinement_20260916/design_01.json"
+      ],
+      "selections": ["cases[].spec.config", "cases[].spec.field_metadata"],
+      "boundary": "Rigid sphere/prolate representation; do not substitute the historical 37-node fibre method."
+    },
+    {
+      "figure": 2,
+      "role": "Finite numerical screening, not empirical validation",
+      "sources": [
+        "C:/MATDEM_MICROPLASTIC/stage134_evaluations/sphere_combined_budget_refinement_20260916/independent_evaluation_01/results.json"
+      ],
+      "selections": ["shapes[].latest_cpd4_temporal", "shapes[].latest_cpd6_temporal", "shapes[].cpd4_to_cpd6", "shapes[].combined_spatial_plus_twice_temporal", "shapes[].limits", "shapes[].record_bindings"],
+      "boundary": "Screening allowances are not confidence intervals or rigorous asymptotic error bounds. Runtime comes from the bound records, not from a population-cost extrapolation."
+    },
+    {
+      "figure": 3,
+      "role": "One matched seed/start at 0.5 seconds",
+      "sources": [
+        "C:/MATDEM_MICROPLASTIC/stage134_runs/sphere_combined_budget_refinement_20260916/sentinels_01/refined_s2_sphere_f1p0_cpd6_dt64_h0p5/segment_01/record.json",
+        "C:/MATDEM_MICROPLASTIC/stage133_runs/cpd6_response_refinement_20260916/sentinels_01/fresh_s2_ar4_f1p0_cpd6_dt16_h0p5/segment_02/record.json"
+      ],
+      "selections": ["result.time_s", "result.status", "result.position_m", "result.orientation", "result.velocity_generalized", "result.history"],
+      "boundary": "Before drawing a trajectory, confirm the history-column schema and whether the continued fibre record includes earlier segments. Both terminal statuses are present_at_horizon; neither is a population release estimate."
+    },
+    {
+      "figure": 4,
+      "role": "Experimental hydraulic context, no current simulation overlay",
+      "sources": [
+        "C:/MATDEM_MICROPLASTIC/literature_comparison_20260917/comparison_02/measurements.json"
+      ],
+      "selections": ["aminzadeh.rows", "yu.rows"],
+      "boundary": "Keep material/condition panels separate. Use K_over_K0, preserve the unavailable point, distinguish SD from digitisation sensitivity, and do not count repeated controls as independent."
+    },
+    {
+      "figure": 5,
+      "role": "Separate fibre trapping and sphere breakthrough literature panels",
+      "sources": [
+        "C:/MATDEM_MICROPLASTIC/literature_comparison_20260917/comparison_02/measurements.json"
+      ],
+      "selections": ["cohen.rows", "ameen.rows", "ameen.conditions", "ameen.coverage"],
+      "boundary": "Trapping uses analysed-fibre counts. Breakthrough uses C_over_C0; bulk_column_volumes_Qt_over_AL is not pore volumes. No integral recovery from the partial marker subset."
+    }
+  ],
+  "excluded_from_current_result_claims": [
+    "Legacy Stage31 hydraulic ratios as requalified simulation predictions",
+    "A population-release or flow-response trend inferred from one short-time start",
+    "Historical fixed-fibre hydraulics described as current moving-prolate transport",
+    "PET treatment images presented as new hydraulic experiments or a chemical degradation calibration",
+    "Experimental predictive accuracy, model superiority, or first-ever fibre simulation"
+  ],
+  "audit_sources": [
+    "C:/MATDEM_MICROPLASTIC/literature_comparison_20260917/comparison_02/audit.json",
+    "C:/MATDEM_MICROPLASTIC/literature_comparison_20260917/comparison_02/simulation_comparison.json"
+  ]
+}

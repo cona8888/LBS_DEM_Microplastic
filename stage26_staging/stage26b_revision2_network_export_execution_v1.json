@@ -1,0 +1,114 @@
+{
+  "schema": "lbs.stage26b-revision2-network-export-execution.v1",
+  "status": "authorized_stage26b_revision2_network_export",
+  "purpose": "Export and characterize the exact accepted Stage25 sand contact network without advancing the YADE state.",
+  "claim_boundary": "Read-only contact-network export from the exact Stage25 216-grain periodic checkpoint. This is graph and force metadata, not a new mechanical state, placement result, permeability result, physical mixing model, polymer calibration, migration result, deformation result, or coupled-flow result.",
+  "sources": {
+    "expected_yade_version": "2022.01a",
+    "source_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26b_tier1_placement_stability_revision2_20260814/source_checkpoint_01/checkpoint_manifest.json",
+    "source_checkpoint_sha256": "e673c9c27f567fd0bbc7789f667e34f34002ce34f730004e8b488d46da46ac73",
+    "design_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26b_tier1_placement_stability_revision2_20260814/design_checkpoint_01/checkpoint_manifest.json",
+    "design_checkpoint_sha256": "7d31717c744a01dcae456800fb9be2f3b7951b07e81aae54fdc6b31e7ac0a200",
+    "stage25_checkpoint": "C:/MATDEM_MICROPLASTIC/stage25_runs/stage25a_pure_sand_mechanics_20260813/qualification_04/mu_0.60/load_bearing_state.yade.gz",
+    "stage25_checkpoint_sha256": "598107294f82d3a5f317f02fc87599d324fc614bb02bfd5048f6a932cced4aad",
+    "stage25_result": "C:/MATDEM_MICROPLASTIC/stage25_runs/stage25a_pure_sand_mechanics_20260813/qualification_04/mu_0.60/result.json",
+    "stage25_result_sha256": "e98d398c43eb17599ee491967a565c4bbffc2467908585ccff469a8fa024f5e1",
+    "network_exporter": "C:/MATDEM_MICROPLASTIC/stage26_staging/export_stage26b_revision2_stage25_network_v1.py",
+    "network_exporter_sha256": "ebf26304f5e38fc01a7f03685d488d949910b3ac570b61973317580308f56c4d",
+    "common": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26b_revision2_prefilter_common_v1.py",
+    "common_sha256": "0d803b47807863e6e339d4cd0b209a30175425675c4bc12d8372f6c9db25a2d4",
+    "source_audit": "C:/MATDEM_MICROPLASTIC/stage26_evaluations/stage26b_tier1_placement_stability_revision2_20260814/source_audit_01/evaluation.json",
+    "source_audit_sha256": "7bead3ceda7be62fa75e0b79a8b4a8f83164e40bd4f37c67baf1a6bad29bc5b8",
+    "launcher": "C:/MATDEM_MICROPLASTIC/stage26_staging/run_stage26b_revision2_network_export_v1.sh",
+    "launcher_sha256": "4ff11f4a1d2f1faa24d2852e907fb137ab2c0f91a00e32f52dbdfaea411c787a",
+    "environment_probe": "C:/MATDEM_MICROPLASTIC/stage26_evaluations/stage26b_tier1_placement_stability_revision2_20260815/network_export_environment_probe_01/probe.json",
+    "environment_probe_sha256": "15fc94f8e274375fd4b0ea4e5d6ba441689035871b81aff3988702a0542bd1f4",
+    "environment_probe_script": "C:/MATDEM_MICROPLASTIC/stage26_staging/probe_stage26b_revision2_network_export_environment_v1.py",
+    "environment_probe_script_sha256": "ebac888d1579bbf66077fa87e96be7c48182d221a401421a2c164c764007c53b"
+  },
+  "network_export": {
+    "required_sand_particle_count": 216,
+    "required_sand_contact_count": 361,
+    "required_load_bearing_particle_count": 180,
+    "core_degree_threshold": 2,
+    "real_sand_sand_contacts_only": true,
+    "export_contact_force_magnitudes": true,
+    "export_fields": [
+      "sand_body_id",
+      "position_m",
+      "radius_m",
+      "sand_network_degree",
+      "load_bearing_core_member",
+      "load_bearing_core_degree",
+      "incident_normal_force_sum_n",
+      "minimum_incident_normal_force_n",
+      "mean_incident_normal_force_n"
+    ],
+    "dem_state_operations": {
+      "load_checkpoint": true,
+      "step": false,
+      "run": false,
+      "save_checkpoint": false,
+      "modify_body_state": false,
+      "modify_cell_state": false
+    }
+  },
+  "execution": {
+    "platform": "Ubuntu 22.04 under WSL2",
+    "wsl_distribution": "Ubuntu",
+    "working_directory_wsl": "/mnt/c/MATDEM_MICROPLASTIC",
+    "launcher_wsl": "/mnt/c/MATDEM_MICROPLASTIC/stage26_staging/run_stage26b_revision2_network_export_v1.sh",
+    "host_launcher_argv": [
+      "wsl.exe",
+      "-d",
+      "Ubuntu",
+      "--",
+      "bash",
+      "/mnt/c/MATDEM_MICROPLASTIC/stage26_staging/run_stage26b_revision2_network_export_v1.sh"
+    ],
+    "engine_argv": [
+      "/usr/bin/yade",
+      "-n",
+      "-x",
+      "/mnt/c/MATDEM_MICROPLASTIC/stage26_staging/export_stage26b_revision2_stage25_network_v1.py"
+    ],
+    "environment": {
+      "STAGE26B_R2_NETWORK_CONFIG": "/mnt/c/MATDEM_MICROPLASTIC/stage26_staging/stage26b_revision2_network_export_execution_v1.json",
+      "STAGE26B_R2_NETWORK_OUTPUT": "/mnt/c/MATDEM_MICROPLASTIC/stage26_network_exports/stage26b_revision2_stage25_network_20260815/export_01",
+      "STAGE26B_R2_NETWORK_SCRIPT": "/mnt/c/MATDEM_MICROPLASTIC/stage26_staging/export_stage26b_revision2_stage25_network_v1.py"
+    },
+    "output_windows": "C:/MATDEM_MICROPLASTIC/stage26_network_exports/stage26b_revision2_stage25_network_20260815/export_01",
+    "output_wsl": "/mnt/c/MATDEM_MICROPLASTIC/stage26_network_exports/stage26b_revision2_stage25_network_20260815/export_01",
+    "immutable_output": true,
+    "one_shot": true,
+    "gpu_required": false,
+    "expected_artifacts": [
+      "network.json",
+      "particles.csv",
+      "contacts.csv",
+      "completion.json"
+    ]
+  },
+  "acceptance": {
+    "exact_sand_particle_count": 216,
+    "exact_real_sand_contact_count": 361,
+    "exact_load_bearing_core_count": 180,
+    "periodic_cell_required": true,
+    "all_force_magnitudes_finite_and_nonnegative": true,
+    "source_hashes_must_match": true,
+    "output_must_be_new": true,
+    "no_yade_step_or_run": true
+  },
+  "authority": {
+    "network_export_execution_authorized": true,
+    "placement_generation_authorized": false,
+    "prefilter_yade_execution_authorized": false,
+    "two_fibre_free_release_authorized": false,
+    "four_fibre_execution_authorized": false,
+    "eight_or_more_fibre_execution_authorized": false,
+    "flow_execution_authorized": false,
+    "deformation_coupled_flow_authorized": false,
+    "transient_two_way_coupling_authorized": false,
+    "production_parametric_study_authorized": false
+  }
+}

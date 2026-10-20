@@ -1,0 +1,58 @@
+{
+  "schema": "lbs.stage26c-fixed-prefilter-temporal-gate-design.v2",
+  "status": "frozen_design_not_execution_authority",
+  "research_question": "Can an initially two-anchor rigid F37 fibre remain continuously engaged during the known Stage26a conditioning transient and recover a persistent two-anchor terminal state without damaging the qualified 216-grain sand packing?",
+  "claim_boundary": "Fixed-fibre dry-mechanical prefilter only. It does not qualify free fibre motion, polymer properties, permeability, migration, deformation, flow, or hydro-mechanical coupling.",
+  "rationale": {
+    "diagnosis": "The Revision-1 ten-block rule incorrectly required two contacts at every conditioning block. The accepted Stage26a positive control had one persistent declared anchor during blocks 1-25 and 32-33, then two declared anchors throughout blocks 34-60 and passed its subsequent free-relaxation qualification.",
+    "anti_tuning_boundary": "The redesign uses only the frozen positive and negative controls. Revision-3 candidate01 has not been run in YADE and contributes no data to this gate.",
+    "mechanical_interpretation": "One anchor during early servo equilibration is treated as transient engagement, not isolation. Promotion requires continuous engagement and a sustained two-anchor terminal window."
+  },
+  "evidence": {
+    "revision1_control_failure_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26c_revision3_fixed_prefilter_20260816/control_failure_checkpoint_01/checkpoint_manifest.json",
+    "revision1_control_failure_checkpoint_sha256": "a67834cb28be6420ad0dbef07c182f301c48856869251b886b960c9b4539a762",
+    "accepted_stage26a_conditioning_history": "C:/MATDEM_MICROPLASTIC/stage26_runs/stage26a_dry_f37_insertion_20260813/qualification_03/conditioning_history.csv",
+    "accepted_stage26a_conditioning_history_sha256": "6880d7e784638514197bfc16183e54ed5a08da12b400b343c2d417c3c4c8381e",
+    "revision1_execution_config": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26c_fixed_prefilter_controls_execution_v1.json",
+    "revision1_execution_config_sha256": "58a833dd0fb59a9244a78d8500cc6aeac5197af4e71e3805863dc84a84246e8d"
+  },
+  "protocol": {
+    "all_fibres_fixed": true,
+    "free_release": false,
+    "blocks": 60,
+    "steps_per_block": 500,
+    "transient_window_blocks_inclusive": [1, 50],
+    "terminal_persistence_window_blocks_inclusive": [51, 60]
+  },
+  "temporal_contact_gate": {
+    "transient_minimum_distinct_sand_contacts_per_fibre": 1,
+    "transient_minimum_declared_anchor_contacts_per_fibre": 1,
+    "terminal_minimum_distinct_sand_contacts_per_fibre": 2,
+    "terminal_minimum_declared_anchor_contacts_per_fibre": 2,
+    "maximum_isolated_fibre_count_at_every_block": 0,
+    "require_every_block_in_each_window": true
+  },
+  "control_acceptance": {
+    "positive_stage26a": "Insertion has exactly two contacts, the temporal contact gate passes, and terminal sand-health gates pass.",
+    "negative_stage26b_failure": "Insertion has exactly two contacts per fibre and at least one fibre becomes isolated in the transient or terminal window; this known failure must reproduce."
+  },
+  "frozen_unchanged": [
+    "Stage25 checkpoint and 216-grain geometry",
+    "fibre F37 geometry, mass, density, stiffness, friction, and fixed kinematics",
+    "100 Pa isotropic target stress, gravity, damping, timestep safety, controller rate",
+    "insertion geometry and exact two-contact insertion condition",
+    "terminal sand-health, penetration, fibre-fibre, and intraclump gates"
+  ],
+  "execution_order": [
+    "positive_stage26a",
+    "negative_stage26b_failure",
+    "revision3_candidate01 only after both controls reproduce"
+  ],
+  "authority": {
+    "source_implementation_authorized": true,
+    "control_execution_authorized": false,
+    "candidate_execution_authorized": false,
+    "free_release_authorized": false,
+    "flow_execution_authorized": false
+  }
+}

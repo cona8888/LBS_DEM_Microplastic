@@ -1,0 +1,46 @@
+{
+  "authority": {
+    "candidate_and_implementation_audit": true,
+    "gpu_execution": false,
+    "mechanics_execution": false,
+    "mobile_sand": false,
+    "production_concentration_campaign": false,
+    "two_way_coupling": false
+  },
+  "claim_boundary": "Fixed-sand two-fibre mechanics-to-hydraulics mechanism pilot at approximately 0.0093815 dry-mass percent with path-matched isolated controls; no production concentration law, material validation, mobile sand, clogging evolution or two-way coupling.",
+  "new_isolated_path_controls": [
+    14848,
+    30311,
+    30924
+  ],
+  "paired_cases": [
+    "separated_open_open",
+    "separated_open_constricted",
+    "crossing_interaction"
+  ],
+  "path_match_acceptance": {
+    "alignment": "minimum_image_centroid_translation",
+    "maximum_terminal_centreline_rms_over_fibre_diameter": 0.05,
+    "required_for_paired_cases": [
+      "separated_open_open",
+      "separated_open_constricted"
+    ]
+  },
+  "preserved_sources": {
+    "candidate_geometry": {
+      "path": "C:\\MATDEM_MICROPLASTIC\\stage28_designs\\stage28a_two_fibre_mechanics_hydraulics_20260824\\candidate_geometry_01\\candidate_geometry.json",
+      "sha256": "b6dbe72daf7eadffa82bb6b1d2c7a4547e64c8ca3fad05ca5aa6b5436fc1fe73"
+    },
+    "design_v1": {
+      "path": "C:\\MATDEM_MICROPLASTIC\\stage28_staging\\stage28a_two_fibre_design_v1.json",
+      "sha256": "8bfef02a68a313772383ac761ac82a48b8477323ba8e9c49d64518d52023ef50"
+    },
+    "design_v1_audit": {
+      "path": "C:\\MATDEM_MICROPLASTIC\\stage28_evaluations\\stage28a_two_fibre_mechanics_hydraulics_20260824\\design_audit_01\\design_audit.json",
+      "sha256": "36359adbf228eb2161a046072add4629d3a8aa4c97eb2d961da45c78550b19b9"
+    }
+  },
+  "research_question": "After path-matched isolated controls are established, do separated two-fibre responses reproduce isolated mechanics while a controlled crossing produces a finite noncohesive fibre-fibre interaction?",
+  "schema": "lbs.stage28a-two-fibre-mechanics-hydraulics-design.v2",
+  "status": "revision2_isolated_controls_frozen_implementation_audit_required"
+}

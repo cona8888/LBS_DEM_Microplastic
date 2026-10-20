@@ -1,0 +1,93 @@
+{
+  "acceptance": {
+    "maximum_aligned_terminal_centreline_rms_over_fibre_diameter": 0.05,
+    "maximum_cell_dimension_change_m": 0.0,
+    "maximum_fixed_sand_displacement_m": 0.0,
+    "maximum_penetration_over_fibre_radius": 0.01,
+    "minimum_crossing_fibre_fibre_contacts": 1,
+    "required_internal_bonds_per_fibre": 36,
+    "required_nodes_per_fibre": 37,
+    "required_sand_particles": 216,
+    "separated_fibre_fibre_contacts": 0
+  },
+  "authority": {
+    "design_audit": true,
+    "gpu_execution": false,
+    "mechanics_execution": false,
+    "mobile_sand": false,
+    "production_concentration_campaign": false,
+    "two_way_coupling": false
+  },
+  "cases": [
+    {
+      "case_id": "separated_open_open",
+      "fibre_count": 2,
+      "mechanism": "noninteracting_independence_control",
+      "required_terminal_fibre_fibre_contacts": 0,
+      "single_fibre_archetypes": [
+        "open",
+        "open"
+      ]
+    },
+    {
+      "case_id": "separated_open_constricted",
+      "fibre_count": 2,
+      "mechanism": "noninteracting_mixed_archetype_additivity",
+      "required_terminal_fibre_fibre_contacts": 0,
+      "single_fibre_archetypes": [
+        "open",
+        "constricted"
+      ]
+    },
+    {
+      "case_id": "crossing_interaction",
+      "fibre_count": 2,
+      "mechanism": "resolved_fibre_fibre_contact",
+      "required_terminal_fibre_fibre_contacts_minimum": 1,
+      "single_fibre_archetypes": [
+        "open",
+        "open"
+      ]
+    }
+  ],
+  "claim_boundary": "Fixed-sand two-fibre mechanics-to-hydraulics mechanism pilot at approximately 0.0093815 dry-mass percent; no production concentration law, material validation, mobile sand, clogging evolution or two-way coupling.",
+  "concentration": {
+    "achieved_dry_mass_percent_reference": 0.009381481678218612,
+    "fibre_count": 2,
+    "stage24_target_dry_mass_percent": 0.01
+  },
+  "hydraulic_observables": [
+    "paired_permeability_ratio",
+    "paired_relative_permeability_change",
+    "additive_single_fibre_prediction",
+    "nonadditive_interaction_contrast",
+    "fibre_only_voxel_count",
+    "connected_fluid_fraction",
+    "momentum_balance_relative"
+  ],
+  "lineage": {
+    "stage24c_concentration_evaluation": {
+      "path": "C:\\Users\\wonjuncha-admin\\Documents\\Codex\\2026-07-19\\skill-creator-c-users-wonjuncha-admin\\yade_benchmark\\lbs_calibration\\runs\\stage24c_lbs_f37_cpd2_gpu_screen_20260811\\evaluation_01\\evaluation.json",
+      "sha256": "03b5a6fe14fdd55d3f9aca8dc664702bccf6ce28c6e9f7f3e2d4c153cdef900f"
+    },
+    "stage24e_cpd4_evaluation": {
+      "path": "C:\\Users\\wonjuncha-admin\\Documents\\Codex\\2026-07-19\\skill-creator-c-users-wonjuncha-admin\\yade_benchmark\\lbs_calibration\\runs\\stage24e_lbs_f37_selected_cpd4_gpu_20260812\\evaluation_01\\evaluation.json",
+      "sha256": "034e80d7e5ddfd9f6c29dc93e3b69bb8816ecd904b31a27dfa645de0d5cc3fcf"
+    },
+    "stage26x_fixed_sand_evaluation": {
+      "path": "C:\\MATDEM_MICROPLASTIC\\stage26_evaluations\\stage26x_periodic_pore_geometry_20260823\\fixed_sand_evaluation_01\\evaluation.json",
+      "sha256": "f456ccfec9a058685c4f201574b44159a0d215d22c8fa48020124bd447f262b0"
+    },
+    "stage27b_checkpoint": {
+      "path": "C:\\MATDEM_MICROPLASTIC\\stage27_evaluations\\stage27b_stage26x_mechanics_hydraulic_cpd4_20260824\\evaluation_01\\checkpoint_manifest.json",
+      "sha256": "be1ad72c1d6f83a92621693b62bf7145cfab75cef770016834dcc4fa0fa6ba7f"
+    },
+    "stage27b_evaluation": {
+      "path": "C:\\MATDEM_MICROPLASTIC\\stage27_evaluations\\stage27b_stage26x_mechanics_hydraulic_cpd4_20260824\\evaluation_01\\evaluation.json",
+      "sha256": "9716701710a31b22608ccabee3686374dff69d50ecbdd78d0e3639670417c380"
+    }
+  },
+  "research_question": "Before a flexible-fibre concentration campaign, can the implementation reproduce two independent single-fibre responses and resolve a controlled fibre-fibre contact without numerical or geometric failure?",
+  "schema": "lbs.stage28a-two-fibre-mechanics-hydraulics-design.v1",
+  "status": "design_frozen_independent_preflight_required"
+}

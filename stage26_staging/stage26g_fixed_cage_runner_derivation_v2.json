@@ -1,0 +1,20 @@
+{
+  "authority": {
+    "fixed_fibre_execution_supported": true,
+    "flow_supported": false,
+    "free_release_supported": false
+  },
+  "builder_sha256": "9833618913dc068e5161b74f5155b607d1d8a974bb7d1f6b64318b29f38f9e56",
+  "failure_record": "C:\\MATDEM_MICROPLASTIC\\stage26_staging\\stage26g_runner_v1_integration_failure.json",
+  "failure_record_sha256": "70119980a212477542ce1f929aef0db74874db9c5082f9bb8b7d3261010f7f16",
+  "output_v2": "C:\\MATDEM_MICROPLASTIC\\stage26_staging\\run_stage26g_fixed_cage_capture_v2.py",
+  "output_v2_sha256": "ef6613dc6aabc0db19a4ff23de4c6fdc4ad2b199134c0e33448ff5138d059d58",
+  "passed": true,
+  "schema": "lbs.stage26g-fixed-cage-runner-derivation.v2",
+  "single_change": {
+    "new": "from stage26e_capture_common_v1 import advance_equilibrium_streak",
+    "old": "from stage26g_capture_common_v1 import advance_equilibrium_streak"
+  },
+  "source_v1": "C:\\MATDEM_MICROPLASTIC\\stage26_staging\\run_stage26g_fixed_cage_capture_v1.py",
+  "source_v1_sha256": "030eabe07b45b6db55803103e77dbabb62c8ef1e9a92d484057741dc40ab439a"
+}

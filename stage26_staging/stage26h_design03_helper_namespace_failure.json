@@ -1,0 +1,18 @@
+{
+  "schema": "lbs.stage26h-zero-step-helper-namespace-failure.v1",
+  "passed": true,
+  "status": "failed_after_checkpoint_load_before_simulation_step",
+  "rejected_design": "C:/MATDEM_MICROPLASTIC/stage26_designs/stage26h_bounded_mobile_conditioning_20260817/design_03",
+  "attempted_output": "C:/MATDEM_MICROPLASTIC/stage26_runs/stage26h_bounded_mobile_conditioning_20260817/pilot_02/candidate07",
+  "simulation_steps_executed": 0,
+  "model_checkpoint_loaded": true,
+  "result_bundle_created": false,
+  "reason": "The side-effect-free imported helper did not explicitly import YADE Vector3/Sphere symbols; the main YADE script namespace does not propagate those symbols into imported modules.",
+  "physics_or_gate_change_required": false,
+  "correction": "Explicitly import the YADE vector and sphere classes in the helper, rebind hashes, and use a fresh output identity.",
+  "authority": {
+    "heldout_execution_authorized": false,
+    "reserve_execution_authorized": false,
+    "flow_execution_authorized": false
+  }
+}

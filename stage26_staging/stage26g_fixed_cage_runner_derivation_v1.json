@@ -1,0 +1,77 @@
+{
+  "authority": {
+    "fixed_fibre_execution_supported": true,
+    "flow_supported": false,
+    "free_release_supported": false
+  },
+  "builder": "C:\\MATDEM_MICROPLASTIC\\stage26_staging\\build_stage26g_fixed_cage_runner_v1.py",
+  "builder_sha256": "eacb4d53e2b202b409df3c870ed4b70b4f1e0d015e07c3a7096f7338af57a3a1",
+  "output": "C:\\MATDEM_MICROPLASTIC\\stage26_staging\\run_stage26g_fixed_cage_capture_v1.py",
+  "output_sha256": "030eabe07b45b6db55803103e77dbabb62c8ef1e9a92d484057741dc40ab439a",
+  "passed": true,
+  "schema": "lbs.stage26g-fixed-cage-runner-derivation.v1",
+  "source": "C:\\MATDEM_MICROPLASTIC\\stage26_staging\\run_stage26e_qualified_state_capture_v2.py",
+  "source_sha256": "b775ce1cacdab522ad83af83ab1043c9f16fca6b24ca3fb2d026548235ef33ed",
+  "transformations": [
+    {
+      "new": "STAGE26G_CAGE",
+      "occurrences": 9,
+      "old": "STAGE26E_CAPTURE"
+    },
+    {
+      "new": "Stage26g",
+      "occurrences": 3,
+      "old": "Stage26e"
+    },
+    {
+      "new": "stage26g",
+      "occurrences": 9,
+      "old": "stage26e"
+    },
+    {
+      "new": "heldout_execution_authorized",
+      "occurrences": 2,
+      "old": "candidate07_heldout_execution_authorized"
+    },
+    {
+      "new": "legacy_revision3_candidate08_execution_authorized",
+      "occurrences": 1,
+      "old": "candidate08_execution_authorized"
+    },
+    {
+      "new": "support_sand_body_ids",
+      "occurrences": 1,
+      "old": "anchor_sand_body_ids"
+    },
+    {
+      "new": "declared_supports",
+      "occurrences": 8,
+      "old": "declared_anchors"
+    },
+    {
+      "new": "support_counts",
+      "occurrences": 3,
+      "old": "anchor_counts"
+    },
+    {
+      "new": "minimum_declared_support_contacts",
+      "occurrences": 2,
+      "old": "minimum_declared_anchor_contacts"
+    },
+    {
+      "new": "declared_support_contacts",
+      "occurrences": 4,
+      "old": "declared_anchor_contacts"
+    },
+    {
+      "new": "if not all(value == 4 for value in insertion[\"distinct_sand_contacts_by_fibre\"]):",
+      "occurrences": 1,
+      "old": "if not all(value == 2 for value in insertion[\"distinct_sand_contacts_by_fibre\"]):"
+    },
+    {
+      "new": "exact four-support insertion failed",
+      "occurrences": 1,
+      "old": "exact two-contact insertion failed"
+    }
+  ]
+}

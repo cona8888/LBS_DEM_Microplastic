@@ -1,0 +1,9 @@
+{
+  "schema": "lbs.stage26i-render-tooling-failure.v1",
+  "passed": true,
+  "status": "failed_before_image_creation",
+  "attempted_render": "C:/MATDEM_MICROPLASTIC/stage26_renders/stage26i_radius_preload_screen_20260817/screen_render_01",
+  "numerical_evidence_affected": false,
+  "reason": "The 0.5 percent value decoded as 0.49999999999998934 and did not match the display color key.",
+  "correction": "Round percentage values to one decimal place only for plotting keys and labels; preserve all source histories unchanged."
+}

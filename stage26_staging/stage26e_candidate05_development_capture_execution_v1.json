@@ -1,0 +1,117 @@
+{
+  "adaptive_equilibration": {
+    "maximum_blocks": 300,
+    "minimum_blocks_before_equilibrium_window": 60,
+    "required_consecutive_passing_blocks": 10
+  },
+  "authority": {
+    "candidate07_heldout_execution_authorized": false,
+    "candidate08_execution_authorized": false,
+    "capture_yade_execution_authorized": true,
+    "deformation_authorized": false,
+    "flow_execution_authorized": false,
+    "production_parametric_study_authorized": false,
+    "reload_verification_execution_authorized": false,
+    "two_fibre_free_release_authorized": false
+  },
+  "candidate_generation": {
+    "D50_m": 0.0008225865451029433
+  },
+  "capture_protocol": {
+    "all_fibres_fixed": true,
+    "free_release": false,
+    "maximum_strain_rate_s_inv": 0.02,
+    "save_on_first_qualifying_window_only": true,
+    "steps_per_block": 500
+  },
+  "claim_boundary": "Candidate05 development of fixed-fibre event capture and state publication only; no release, promoted state, permeability, flow, deformation, migration, or production result.",
+  "continuous_engagement_gates": {
+    "maximum_isolated_fibre_count_at_every_block": 0,
+    "minimum_declared_anchor_contacts_per_fibre_at_every_block": 1,
+    "minimum_distinct_sand_contacts_per_fibre_at_every_block": 1
+  },
+  "equilibrium_window_gates": {
+    "maximum_cell_volume_relative_drift": 0.005,
+    "maximum_fibre_fibre_real_interaction_count": 0,
+    "maximum_interobject_penetration_over_smaller_radius": 0.02,
+    "maximum_intraclump_real_interaction_count": 0,
+    "maximum_principal_stress_error": 0.03,
+    "maximum_relative_mean_stress_error": 0.02,
+    "maximum_sand_displacement_over_D50": 0.1,
+    "maximum_sand_rattler_fraction": 0.35,
+    "maximum_unbalanced_force": 0.05,
+    "minimum_declared_anchor_contacts_per_fibre": 2,
+    "minimum_distinct_sand_contacts_per_fibre": 2,
+    "minimum_sand_contact_retention_fraction": 0.9,
+    "minimum_sand_coordination_excluding_rattlers": 3.0
+  },
+  "frozen_physics": {
+    "fibre_density_kg_m3": 940.0,
+    "fibre_member_radius_m": 5e-05,
+    "fibre_members": 37,
+    "fibre_target_mass_kg": 6.997520680643619e-09,
+    "gravity_m_s2": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "newton_damping": 0.35,
+    "plastic_friction_coefficient": 0.45,
+    "plastic_poisson": 0.25,
+    "plastic_young_pa": 53000000.0,
+    "target_mean_effective_stress_pa": 100.0,
+    "timestep_safety_coefficient": 0.2
+  },
+  "network_export": {
+    "required_sand_contact_count": 361,
+    "required_sand_particle_count": 216
+  },
+  "reload_equivalence_tolerances": {
+    "absolute_scalar": 1e-12,
+    "cell_dimension_absolute_m": 1e-12,
+    "integer_and_contact_sets_exact": true,
+    "relative_scalar": 1e-10
+  },
+  "schema": "lbs.stage26e-development-qualified-state-capture-execution.v1",
+  "sources": {
+    "capture_common": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26e_capture_common_v1.py",
+    "capture_common_sha256": "212145df33b037c31f02c5401c3c2cf80e821f55df32951db10e6c3d62faa768",
+    "capture_runner": "C:/MATDEM_MICROPLASTIC/stage26_staging/run_stage26e_qualified_state_capture_v1.py",
+    "capture_runner_sha256": "58975a10b816469129d17795780575fa3d8a7c0fdd5b238c953b7e2be74a2a3f",
+    "common": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26b_revision2_prefilter_common_v1.py",
+    "common_sha256": "0d803b47807863e6e339d4cd0b209a30175425675c4bc12d8372f6c9db25a2d4",
+    "control_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26d_adaptive_equilibration_20260816/control_requalification_checkpoint_01/checkpoint_manifest.json",
+    "control_checkpoint_sha256": "4fad6250480fd12a8556757cad03cf6a6fd046b263ee96c46cd2fbb2033b1e78",
+    "expected_yade_version": "2022.01a",
+    "network_export_completion": "C:/MATDEM_MICROPLASTIC/stage26_network_exports/stage26b_revision2_stage25_network_20260816/export_04/completion.json",
+    "network_export_completion_sha256": "4e1793183344e5a14f085fe6561af9834305a0ec275a18fc6c95c27acb8d77ee",
+    "normalized_manifest_sha256": "e2753bdc7019cb1842e877b0182a52958c894f288742b22cffee22524b1dafa2",
+    "runner": "C:/MATDEM_MICROPLASTIC/stage26_staging/run_stage26b_revision2_fixed_prefilter_v1.py",
+    "runner_sha256": "cfaf4123b2bf8bf5ee82bf067b914d5593a2179714bf972c9ec3c290f7bdcfd4",
+    "stage25_checkpoint": "C:/MATDEM_MICROPLASTIC/stage25_runs/stage25a_pure_sand_mechanics_20260813/qualification_04/mu_0.60/load_bearing_state.yade.gz",
+    "stage25_checkpoint_sha256": "598107294f82d3a5f317f02fc87599d324fc614bb02bfd5048f6a932cced4aad",
+    "stage26d_adaptive_common": "C:/MATDEM_MICROPLASTIC/stage26_staging/stage26d_adaptive_common_v1.py",
+    "stage26d_adaptive_common_sha256": "4f13ad3895444bdbb5750a6e65437d0ce7fb9258c1c27e5b879a6d9ccae67a83",
+    "stage26d_design_checkpoint_sha256": "f11af5c95974c8dcf02eb4c83188ea8553bda813e5b98815fe42c613b59c02ec",
+    "stage26d_final_confirmation": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26d_adaptive_equilibration_20260816/final_confirmation_checkpoint_01/checkpoint_manifest.json",
+    "stage26d_final_confirmation_sha256": "713abab54522d4098883c83f1c0da0d50c33c21ef47c60767193fa8c0cdd4c03",
+    "stage26e_allocation_manifest": "C:/MATDEM_MICROPLASTIC/stage26_placements/stage26e_qualified_state_capture_20260816/allocation_01/manifest.json",
+    "stage26e_allocation_manifest_sha256": "6991b1242e45e67fb6a672da539342dc989c77d44abb0c961d81ad6c05a56394",
+    "stage26e_design_checkpoint": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26e_qualified_state_capture_20260816/design_checkpoint_01/checkpoint_manifest.json",
+    "stage26e_design_checkpoint_sha256": "89ff1603fe928700ad4bdfde700b86950edd157afd59304c00d451723acfd981",
+    "visual_checkpoint_sha256": "c6cadd8e7d89b8867b3d14f21c70032772c109f11897b225c062878e21ea83d6"
+  },
+  "status": "authorized_stage26e_fixed_capture",
+  "trials": [
+    {
+      "candidate_index": 5,
+      "fibre_count": 2,
+      "minimum_anchor_degree": 3,
+      "placement": "C:/MATDEM_MICROPLASTIC/stage26_placements/stage26e_qualified_state_capture_20260816/allocation_01/revision3_candidate05_development_capture.json",
+      "placement_sha256": "1e1c727772ebb80e3fd13ce030a4d2d4ed66cb5460686cec80740343fe156a45",
+      "record_type": "capture",
+      "stage26e_role": "development_capture",
+      "trial_id": "revision3_candidate05_development_capture"
+    }
+  ]
+}

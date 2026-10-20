@@ -1,0 +1,69 @@
+{
+  "schema": "lbs.stage26f-robust-four-support-cage-design.v1",
+  "status": "authorized_host_python_geometry_generation_only",
+  "physical_question": "Can fresh four-support cages improve the robustness of two fixed F37 fibres in the accepted Stage25 LBS packing?",
+  "sources": {
+    "network": "C:/MATDEM_MICROPLASTIC/stage26_network_exports/stage26b_revision2_stage25_network_20260816/export_04/network.json",
+    "network_sha256": "6b1e0912114742f23afc6391539dd373dbe4a85cb6aabc39658fe62a84c07984",
+    "f37_geometry_review": "C:/Users/wonjuncha-admin/Documents/Codex/2026-07-19/skill-creator-c-users-wonjuncha-admin/yade_benchmark/lbs_calibration/runs/stage8_shape_fibre_visual_gate_20260722/geometry_review.json",
+    "f37_geometry_review_sha256": "ad97e11d217f65a67fb849f5a5f8a93c84f96063ca6853e74a4342dec052b762",
+    "spent_case_diagnostic": "C:/MATDEM_MICROPLASTIC/stage26_evaluations/stage26f_robust_cage_placement_20260817/spent_case_diagnostic_01/evaluation.json",
+    "spent_case_diagnostic_sha256": "d31780cd0fe7d05fb9dc6f94dcae431f1a1ad1d0a8be2af33a729655eede4cb4",
+    "exploratory_multicontact_probe": "C:/MATDEM_MICROPLASTIC/stage26_evaluations/stage26f_robust_cage_placement_20260817/multicontact_probe_01/probe.json",
+    "exploratory_multicontact_probe_sha256": "a684cb54e74c3c0871655925cb53209810771011c861606f62a010fe1ef90c68"
+  },
+  "fibre": {
+    "template_id": "f37_kinked_ar10",
+    "fibre_count_per_candidate": 2,
+    "members_per_fibre": 37,
+    "member_radius_m": 0.00005,
+    "tip_member_indices": [0, 36],
+    "target_contact_penetration_over_member_radius": 0.005,
+    "maximum_contact_penetration_over_member_radius": 0.02
+  },
+  "static_acceptance": {
+    "minimum_distinct_sand_supports_per_fibre": 4,
+    "minimum_support_network_degree": 4,
+    "support_must_be_in_load_bearing_core": true,
+    "minimum_distinct_support_member_indices": 4,
+    "minimum_interior_support_member_separation": 4,
+    "minimum_frictional_wrench_rank": 6,
+    "minimum_frictional_wrench_condition_ratio": 0.02,
+    "minimum_contact_normal_span_condition_ratio": 0.20,
+    "maximum_equal_normal_force_residual_relative": 0.30,
+    "maximum_equal_normal_moment_residual_relative": 0.12,
+    "minimum_initial_fibre_fibre_clearance_m": 0.00041129327255147165,
+    "disjoint_support_bodies_across_fibres": true,
+    "fibres_wholly_inside_primary_cell": true,
+    "excluded_spent_support_body_ids": [6, 18, 40, 119],
+    "candidate08_read_or_used": false
+  },
+  "search_budget": {
+    "candidate_count": 8,
+    "candidate_seed_base": 260617100,
+    "maximum_anchor_pairs_per_candidate": 128,
+    "poses_per_anchor_pair": 128,
+    "maximum_local_contact_fits_per_candidate": 2400,
+    "maximum_retained_single_fibres_per_candidate": 96,
+    "maximum_retained_per_support_set": 1,
+    "stop_after_first_admissible_joint_pair": true,
+    "forbid_budget_extension_after_outcome_inspection": true
+  },
+  "campaign_acceptance": {
+    "minimum_passing_two_fibre_candidates": 6,
+    "minimum_distinct_joint_support_topologies": 4,
+    "require_independent_static_audit": true,
+    "require_visual_review_before_yade": true
+  },
+  "authority": {
+    "host_python_geometry_generation_authorized": true,
+    "candidate08_execution_authorized": false,
+    "yade_execution_authorized": false,
+    "free_release_authorized": false,
+    "rehydration_authorized": false,
+    "deformation_authorized": false,
+    "flow_authorized": false,
+    "permeability_claim_authorized": false
+  },
+  "claim_boundary": "Stage26f fresh robust-cage geometry generation and static screening only; no candidate08 use, YADE execution, release, rehydration, deformation, flow, permeability, migration, polymer calibration, or production result."
+}

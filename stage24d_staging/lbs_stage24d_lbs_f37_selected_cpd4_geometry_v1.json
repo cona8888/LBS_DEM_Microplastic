@@ -1,0 +1,104 @@
+{
+  "schema": "lbs.stage24d-lbs-f37-selected-cpd4-geometry.v1",
+  "status": "authorized_numerical_resolution_confirmation_geometry",
+  "research_question": "Do the six frozen Stage24c microplastic cases retain their exact continuous sand and fibre geometry when rasterized at CPD4, while preserving a connected pore phase?",
+  "claim_boundary": "CPD4 voxelization of six post-screening rigid F37 placements in frozen periodic spherical LBS cells. This is a numerical spatial-resolution check only. It excludes mixing-induced sand rearrangement, polymer deformation, surface chemistry, migration, mechanics, transient FSI, bounded-specimen effects and deformation-coupled flow.",
+  "lineage": {
+    "stage24b_completion": "runs/stage24a_lbs_f37_concentration_design_20260811/geometry_preflight_01/completion.json",
+    "stage24b_completion_sha256": "e157dd7fa931bbe9fe0fa5a517acfbf867f90d69ab4b010933cf55e4420071a3",
+    "stage24c_completion": "runs/stage24c_lbs_f37_cpd2_gpu_screen_20260811/gpu_screen_01/completion.json",
+    "stage24c_completion_sha256": "78e9e462979c2fd31036f626cc41c8619b30709f1ac0b4200ea155e85867e218",
+    "stage24c_evaluation": "runs/stage24c_lbs_f37_cpd2_gpu_screen_20260811/evaluation_01/evaluation.json",
+    "stage24c_evaluation_sha256": "03b5a6fe14fdd55d3f9aca8dc664702bccf6ce28c6e9f7f3e2d4c153cdef900f",
+    "stage23d_completion": "runs/stage23d_clean_lbs_cpd4_selected_geometry_20260810/geometry_01/completion.json",
+    "stage23d_completion_sha256": "9fdb718227d8d72ea1c7b16a5ff123dd3e6f4e668d9faa5f49f91f4ecd2ec77e",
+    "stage23e_evaluation": "runs/stage23e_clean_lbs_cpd4_selected_gpu_20260810/evaluation_01/evaluation.json",
+    "stage23e_evaluation_sha256": "e4d7d09015d0eceb1199ccb4571299f6099aadc70f8d11f18abe6b1c6dca96ff"
+  },
+  "cases": [
+    {
+      "case_id": "stage24_n216_s1_isotropic_B_w0p005_f001",
+      "packing": "n216_s1",
+      "orientation_regime": "isotropic",
+      "placement_block": "B",
+      "fibre_count": 1,
+      "target_dry_mass_percent": 0.005,
+      "achieved_dry_mass_percent": 0.004690960879927048,
+      "source_cpd2_geometry": "runs/stage24a_lbs_f37_concentration_design_20260811/geometry_preflight_01/n216_s1__isotropic__B/stage24_n216_s1_isotropic_B_w0p005_f001/mixed_cpd2_geometry.npz",
+      "source_cpd2_geometry_sha256": "b7311f22ef17977ff35fb9c3040072a6e788d54fb4ba36ad522844097f455d2e",
+      "clean_cpd4_geometry": "runs/stage23d_clean_lbs_cpd4_selected_geometry_20260810/geometry_01/n216_s1/clean_lbs_cpd4_geometry.npz",
+      "clean_cpd4_geometry_sha256": "b866dfbccb03eb787eca3d7cd03d9c418787b32e4235982be14d5f7bbe78704d"
+    },
+    {
+      "case_id": "stage24_n216_s1_isotropic_B_w0p100_f021",
+      "packing": "n216_s1",
+      "orientation_regime": "isotropic",
+      "placement_block": "B",
+      "fibre_count": 21,
+      "target_dry_mass_percent": 0.1,
+      "achieved_dry_mass_percent": 0.09841784362759924,
+      "source_cpd2_geometry": "runs/stage24a_lbs_f37_concentration_design_20260811/geometry_preflight_01/n216_s1__isotropic__B/stage24_n216_s1_isotropic_B_w0p100_f021/mixed_cpd2_geometry.npz",
+      "source_cpd2_geometry_sha256": "02f3e37f2550ef9046efe4c2d4bc8c0835490a0bfacdfcfe447e5e46e64a7d55",
+      "clean_cpd4_geometry": "runs/stage23d_clean_lbs_cpd4_selected_geometry_20260810/geometry_01/n216_s1/clean_lbs_cpd4_geometry.npz",
+      "clean_cpd4_geometry_sha256": "b866dfbccb03eb787eca3d7cd03d9c418787b32e4235982be14d5f7bbe78704d"
+    },
+    {
+      "case_id": "stage24_n216_s1_isotropic_B_w0p400_f086",
+      "packing": "n216_s1",
+      "orientation_regime": "isotropic",
+      "placement_block": "B",
+      "fibre_count": 86,
+      "target_dry_mass_percent": 0.4,
+      "achieved_dry_mass_percent": 0.4018204502627295,
+      "source_cpd2_geometry": "runs/stage24a_lbs_f37_concentration_design_20260811/geometry_preflight_01/n216_s1__isotropic__B/stage24_n216_s1_isotropic_B_w0p400_f086/mixed_cpd2_geometry.npz",
+      "source_cpd2_geometry_sha256": "45b5ab37b6efb9d3b5063cd12a840268a7a6651066e9be5c5bc142af0e32efae",
+      "clean_cpd4_geometry": "runs/stage23d_clean_lbs_cpd4_selected_geometry_20260810/geometry_01/n216_s1/clean_lbs_cpd4_geometry.npz",
+      "clean_cpd4_geometry_sha256": "b866dfbccb03eb787eca3d7cd03d9c418787b32e4235982be14d5f7bbe78704d"
+    },
+    {
+      "case_id": "stage24_n216_s1_parallel_biased_B_w0p400_f086",
+      "packing": "n216_s1",
+      "orientation_regime": "parallel_biased",
+      "placement_block": "B",
+      "fibre_count": 86,
+      "target_dry_mass_percent": 0.4,
+      "achieved_dry_mass_percent": 0.4018204502627295,
+      "source_cpd2_geometry": "runs/stage24a_lbs_f37_concentration_design_20260811/geometry_preflight_01/n216_s1__parallel_biased__B/stage24_n216_s1_parallel_biased_B_w0p400_f086/mixed_cpd2_geometry.npz",
+      "source_cpd2_geometry_sha256": "29482620abc3de334b3d875318f2b0c69337eb075123420e0c60c0099b0a2747",
+      "clean_cpd4_geometry": "runs/stage23d_clean_lbs_cpd4_selected_geometry_20260810/geometry_01/n216_s1/clean_lbs_cpd4_geometry.npz",
+      "clean_cpd4_geometry_sha256": "b866dfbccb03eb787eca3d7cd03d9c418787b32e4235982be14d5f7bbe78704d"
+    },
+    {
+      "case_id": "stage24_n216_s1_transverse_biased_B_w0p400_f086",
+      "packing": "n216_s1",
+      "orientation_regime": "transverse_biased",
+      "placement_block": "B",
+      "fibre_count": 86,
+      "target_dry_mass_percent": 0.4,
+      "achieved_dry_mass_percent": 0.4018204502627295,
+      "source_cpd2_geometry": "runs/stage24a_lbs_f37_concentration_design_20260811/geometry_preflight_01/n216_s1__transverse_biased__B/stage24_n216_s1_transverse_biased_B_w0p400_f086/mixed_cpd2_geometry.npz",
+      "source_cpd2_geometry_sha256": "a78685b86e67e8d26a0aa3019469255f3036935b9730144cca4d5a96cc14206b",
+      "clean_cpd4_geometry": "runs/stage23d_clean_lbs_cpd4_selected_geometry_20260810/geometry_01/n216_s1/clean_lbs_cpd4_geometry.npz",
+      "clean_cpd4_geometry_sha256": "b866dfbccb03eb787eca3d7cd03d9c418787b32e4235982be14d5f7bbe78704d"
+    },
+    {
+      "case_id": "stage24_n216_s2_isotropic_B_w0p400_f086",
+      "packing": "n216_s2",
+      "orientation_regime": "isotropic",
+      "placement_block": "B",
+      "fibre_count": 86,
+      "target_dry_mass_percent": 0.4,
+      "achieved_dry_mass_percent": 0.4018204502627295,
+      "source_cpd2_geometry": "runs/stage24a_lbs_f37_concentration_design_20260811/geometry_preflight_01/n216_s2__isotropic__B/stage24_n216_s2_isotropic_B_w0p400_f086/mixed_cpd2_geometry.npz",
+      "source_cpd2_geometry_sha256": "9a014f3287604914d87b52e1ad58be360e7ca50c1d198f87fb815170c2f6c169",
+      "clean_cpd4_geometry": "runs/stage23d_clean_lbs_cpd4_selected_geometry_20260810/geometry_01/n216_s2/clean_lbs_cpd4_geometry.npz",
+      "clean_cpd4_geometry_sha256": "0355914b6e3996365c4d13c7a75387ee0d2d2522b6c571e0fe720a0eaf803d4a"
+    }
+  ],
+  "voxel": {
+    "minimum_fibre_voxels_per_fibre": 20,
+    "minimum_largest_fluid_component_fraction": 0.99,
+    "maximum_absolute_cpd4_minus_cpd2_solid_increment": 0.001,
+    "maximum_allocation_bytes": 2000000000
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "lbs.stage24d-lbs-f37-selected-cpd4-geometry.v1.visual-audit",
+  "status": "passed_agent_visual_and_hash_audit",
+  "passed": true,
+  "reviewer": "Codex scientific visual audit",
+  "geometry_completion_sha256": "2db54f47e79370b91082ff35b83a92da9b94be2d6331ad5646f59a77876676a0",
+  "render_manifest_sha256": "37a40f671777c48bb6cb93eeccb60486a9fd6963e2ba6cfd0f2b1c70d2e607c2",
+  "image_sha256": "6474f2e616cc4efd701406a1c6beb5aaf2591de2edb00d8cdb0745f17d3d9623",
+  "checks": {
+    "all_six_frozen_cases_present": true,
+    "low_middle_high_concentration_progression_visible": true,
+    "parallel_and_transverse_fabrics_visually_distinct": true,
+    "holdout_packing_visually_distinct": true,
+    "sand_and_fibre_phases_unambiguous": true,
+    "equal_physical_axis_scale": true,
+    "fibre_width_not_magnified": true,
+    "labels_and_claim_boundary_readable": true,
+    "no_visual_artifact_blocking_gpu_handoff": true
+  },
+  "claim_boundary": "Visual and hash audit of exact CPD4 phase assignments only; not experimental validation or evidence for deformable/migrating microplastic, mixed-specimen rearrangement, mechanics, transient FSI, bounded-specimen behavior or coupled deformation.",
+  "decision": "The frozen six-case sequential CPD4 static-flow confirmation may be staged. The diagnostic render_01 remains nonaccepted; render_02 is the accepted visual source."
+}

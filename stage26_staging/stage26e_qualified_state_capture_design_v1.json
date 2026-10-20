@@ -1,0 +1,89 @@
+{
+  "schema": "lbs.stage26e-qualified-state-capture-design.v1",
+  "status": "frozen_design_not_execution_authority",
+  "research_question": "Can the confirmed Stage26d adaptive gate be evaluated online and stop at its first qualifying 10-block window so that the exact fixed-fibre equilibrium state is saved and independently reload-verified?",
+  "claim_boundary": "Dry fixed-fibre state-capture method only. No fibre release, free-fibre stability, polymer calibration, permeability, flow, deformation, migration, transient FSI, or production concentration effect.",
+  "source_evidence": {
+    "stage26d_final_confirmation": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26d_adaptive_equilibration_20260816/final_confirmation_checkpoint_01/checkpoint_manifest.json",
+    "stage26d_final_confirmation_sha256": "713abab54522d4098883c83f1c0da0d50c33c21ef47c60767193fa8c0cdd4c03",
+    "stage26d_final_visual": "C:/MATDEM_MICROPLASTIC/stage26_checkpoints/stage26d_adaptive_equilibration_20260816/final_visual_checkpoint_01/checkpoint_manifest.json",
+    "stage26d_final_visual_sha256": "7b3e85aaf8e94fe76e1d2912df6fd289f7ddbc887c0e644e2edb61349329f750",
+    "revision3_campaign_evaluation": "C:/MATDEM_MICROPLASTIC/stage26_evaluations/stage26b_revision3_joint_placement_20260816/campaign_evaluation_01/evaluation.json",
+    "revision3_campaign_evaluation_sha256": "20ffaef3e6f18539631ea6a43253dfb4ed4bfe2f36506c043835501c48262a40"
+  },
+  "evidence_allocation_frozen_before_execution": {
+    "candidate05": "development of online event detection, checkpoint publication, and reload verification",
+    "candidate07": "one-shot held-out confirmation of the frozen capture implementation",
+    "candidate08": "untouched reserve for a later, separately designed free-release validation",
+    "candidate01": "spent Stage26d development evidence; unavailable as independent evidence",
+    "candidate04": "spent Stage26d held-out evidence; rerun prohibited"
+  },
+  "source_placements": {
+    "candidate05_sha256": "cb51de36eedbd2a433395419545ba91af4fe368e814f1ced702245b00ca05aeb",
+    "candidate07_sha256": "e17ce8b08218c949776fc1fb867d41a9d0c74ea7eaf23009c3026fac38b4ec00",
+    "candidate08_sha256": "37bdfc90e5223d1449748cfd1f844215bcfbd232e06785432129200add2a0234"
+  },
+  "frozen_capture_protocol": {
+    "all_fibres_fixed": true,
+    "free_release": false,
+    "steps_per_block": 500,
+    "minimum_blocks_before_equilibrium_window": 60,
+    "maximum_blocks": 300,
+    "required_consecutive_passing_blocks": 10,
+    "capture_event": "Immediately after the tenth consecutive passing diagnostic row, before any further YADE step, save one checkpoint and terminate the run.",
+    "checkpoint_rule": "Exactly one state file; SHA-256-bound result and completion; no checkpoint if the gate is not reached.",
+    "reload_rule": "A separate immutable YADE process must reload the state, take zero integration steps, recompute the full diagnostic, reproduce the captured row within frozen tolerances, and publish no modified state."
+  },
+  "continuous_engagement_gate": {
+    "minimum_distinct_sand_contacts_per_fibre_at_every_block": 1,
+    "minimum_declared_anchor_contacts_per_fibre_at_every_block": 1,
+    "maximum_isolated_fibre_count_at_every_block": 0
+  },
+  "equilibrium_window_gate": {
+    "minimum_distinct_sand_contacts_per_fibre": 2,
+    "minimum_declared_anchor_contacts_per_fibre": 2,
+    "maximum_relative_mean_stress_error": 0.02,
+    "maximum_principal_stress_error": 0.03,
+    "maximum_unbalanced_force": 0.05,
+    "minimum_sand_coordination_excluding_rattlers": 3.0,
+    "maximum_sand_rattler_fraction": 0.35,
+    "minimum_sand_contact_retention_fraction": 0.9,
+    "maximum_sand_displacement_over_D50": 0.1,
+    "maximum_cell_volume_relative_drift": 0.005,
+    "maximum_interobject_penetration_over_smaller_radius": 0.02,
+    "maximum_fibre_fibre_real_interaction_count": 0,
+    "maximum_intraclump_real_interaction_count": 0
+  },
+  "reload_equivalence_tolerances": {
+    "absolute_scalar": 1e-12,
+    "relative_scalar": 1e-10,
+    "integer_and_contact_sets": "exact",
+    "cell_dimensions_m": "componentwise absolute 1e-12 m"
+  },
+  "sequential_handoff": [
+    "normalize and hash-freeze candidates05, 07, and 08",
+    "implement and unit-test the capture and reload-verification logic",
+    "execute candidate05 development once",
+    "audit its saved-state and reload bundle",
+    "freeze implementation hashes without tuning physics or gates",
+    "execute candidate07 held-out capture once",
+    "stop before any free release and preserve candidate08"
+  ],
+  "failure_rules": {
+    "resource_ceiling": "No qualifying window by block 300 produces no saved state and fails that geometry.",
+    "engagement": "Any complete loss of contacts or declared anchors fails the geometry and produces no saved state.",
+    "state_publication": "Any missing, extra, mutable, or hash-mismatched state file fails closed.",
+    "reload": "Any diagnostic mismatch fails state promotion and prohibits release.",
+    "heldout": "Candidate07 may run once only and cannot be retuned or rerun as independent evidence."
+  },
+  "authority": {
+    "normalization_authorized": true,
+    "source_implementation_authorized": true,
+    "candidate05_development_execution_authorized": false,
+    "candidate07_heldout_execution_authorized": false,
+    "candidate08_execution_authorized": false,
+    "free_release_authorized": false,
+    "flow_execution_authorized": false,
+    "deformation_authorized": false
+  }
+}

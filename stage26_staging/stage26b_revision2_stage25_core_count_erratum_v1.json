@@ -1,0 +1,39 @@
+{
+  "schema": "lbs.stage26b-revision2-stage25-core-count-erratum.v1",
+  "status": "proposed_evidence_bound_gate_correction",
+  "purpose": "Correct the predeclared Stage25 degree-2 load-bearing-core count without changing the checkpoint, graph definition, contact physics, or exporter source.",
+  "superseded_gate": {
+    "field": "network_export.required_load_bearing_particle_count",
+    "incorrect_value": 180,
+    "corrected_value": 175,
+    "core_degree_threshold": 2
+  },
+  "unchanged_evidence": {
+    "stage25_checkpoint_sha256": "598107294f82d3a5f317f02fc87599d324fc614bb02bfd5048f6a932cced4aad",
+    "particle_count": 216,
+    "real_contact_count": 361,
+    "graph_definition": "Iteratively remove vertices having degree less than 2 from the undirected real sand-sand contact graph.",
+    "network_exporter_sha256": "16f401536c3beec721992c0d07921229d80e41d2b1ec1c7df07e9955dce30a4e",
+    "common_sha256": "0d803b47807863e6e339d4cd0b209a30175425675c4bc12d8372f6c9db25a2d4"
+  },
+  "evidence": {
+    "attempt2_failure": "C:/MATDEM_MICROPLASTIC/stage26_failures/stage26b_revision2_stage25_network_20260816/attempt_02/failure.json",
+    "attempt2_failure_sha256": "a806755d76d68c8ce87368e179b51cc4c774547171f149912eaea75e719b2110",
+    "stage25_result": "C:/MATDEM_MICROPLASTIC/stage25_runs/stage25a_pure_sand_mechanics_20260813/qualification_04/mu_0.60/result.json",
+    "stage25_result_sha256": "e98d398c43eb17599ee491967a565c4bbffc2467908585ccff469a8fa024f5e1",
+    "prior_contacts": "C:/MATDEM_MICROPLASTIC/stage25_exports/stage25a_pure_sand_mechanics_20260813/contact_export_01/contacts.csv",
+    "prior_contacts_sha256": "33dee02fa0774156f656bea8f1119edaa8e37a6fd7c4513f8d4cda2f2fdd6cc2",
+    "prior_completion": "C:/MATDEM_MICROPLASTIC/stage25_exports/stage25a_pure_sand_mechanics_20260813/contact_export_01/completion.json",
+    "prior_completion_sha256": "200dca07e28028b1d0c33f24a964e83a582a3219e919ecb9823a39b2696437b1"
+  },
+  "authority": {
+    "erratum_audit_authorized": true,
+    "network_export_execution_authorized": false,
+    "placement_generation_authorized": false,
+    "prefilter_yade_execution_authorized": false,
+    "two_fibre_free_release_authorized": false,
+    "four_fibre_execution_authorized": false,
+    "flow_execution_authorized": false
+  },
+  "claim_boundary": "Offline graph-gate correction only; no DEM evolution, new mechanical state, placement, fibre mechanics, permeability, or coupled-flow result."
+}
