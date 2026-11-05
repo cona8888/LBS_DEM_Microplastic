@@ -1,23 +1,39 @@
-# RhizoField: growing-root contact search
+# RhizoField growing-root contact: verified dry integration repair
 
-C++17 geometry module for the separate two-way LBM–IBM–DEM research line, not the Paper 1 one-way transport model. `make test` and `make bin/benchmark && ./bin/benchmark > timing.csv` need only a standard C++ compiler. `make native growth SOLVER=/path/to/RhizoField/solver` additionally needs v0.3 `include/{common,dem}.hpp` and `src/dem.cpp` from the native solver distribution. The calibrated RhizoField archive includes these; the parent GitHub source index carries only selected files. This change does not replace the calibrated open-gap capillary benchmark.
+Read [HANDOVER.md](HANDOVER.md) for the A-I development review, actual capability
+matrix, defects, corrections, numerical gates and experimental limitations.
+The historical contact-search description is in [LEGACY_README.md](LEGACY_README.md).
 
-## Which algorithm to use
+This update fixes a reproduced root-force timing defect. Native `DEM::advance`
+accepts constant external forces, but the former driver held state-dependent
+root loads constant through a step. A new `DryRootStepper` refreshes root loads
+in symmetric stages and updates slip history once per accepted increment.
+Physical state rolls back on iteration failure. The native DEM files and all
+material/calibration values are unchanged.
 
-Start with `Search(Mode::automatic,skin,eps)`; use a fresh `Mode::tree` for sustained rapid rearrangement, and `Mode::direct` for a reference. In slow-growth tests the speed comes from rejecting distant spans and safely reusing candidate lists, not lower stiffness, changed friction, or longer physical steps. `Search::run` returns current grain/edge IDs, signed gap, normal and two surface witnesses. Use stable, unique nodes, edges and grain ordering. For a curved CT centreline, halve the span length and check the convergence of forces/displacement; also converge the tip shape.
+```sh
+make test
+make integration-test
+make bin/growth_cell bin/native_probe
+./bin/native_probe tip cached 6000
+./bin/native_probe radial cached 6000
+python3 run_review.py --output review_run
+```
 
-The grain is a sphere; each root span is the convex hull of its endpoint balls. For axis length L, axial projection h, perpendicular distance d and endpoint radius difference dr, the generating centre fraction is `clamp((h+d*dr/sqrt((L-|dr|)*(L+|dr|)))/L,0,1)`. If L<=abs(dr), use the containing ball. This follows by minimising centre distance minus interpolated root radius minus grain radius. Per-span distance is analytical, not an exact closest-point solution for arbitrary CT roots or angular grains. Joint-cap ownership and buried-witness filtering give a shallow-contact manifold, retaining distinct exposed branch contacts.
+C++17, make and NumPy are required. The Makefile uses the full local solver when
+available, otherwise the unchanged minimal dependency in `native/`. The Python
+harness creates the raw histories, source hashes, numerical checks and timing
+records. `--resume` only reuses checksum-matching completed case outputs.
 
-The bounding-box candidate cache is safe at evaluation time while `max_grains(displacement+abs(radius change)) + max_root_nodes(displacement+abs(radius change)) < installed_skin`. The changes are relative to the last build. A connectivity change forces a rebuild. From one end state alone, contact between frames can still be missed. `Search::guard` therefore offers a separate swept tree and conservative possible-event interval for linearly interpolated centres/radii. Split topology events; subdivide alerts, do not apply an impact impulse from an alert. The native demos use resolved substeps, not automatic CCD rollback.
+Key verification: the 20-cycle normal oscillator's maximum relative energy error
+at 800 steps/period falls from 0.638000 to 1.54226e-5. Dry growth direct/cached
+histories match; force/envelope difference between the two finest steps is
+1.37589%, and actual per-step peak difference is 0.24692%. The 56-grain fixture
+has a 2.213216 N/m peak and 67.7342 micrometre final maximum grain displacement.
+Compact numerical evidence is in `review/`.
 
-`PlanarLaw` supplies compression-only elastic/dashpot normal and elastic-Coulomb tangential tractions. Positive gaps get no dry force. Fluid traction has a separate owner: do not add JKR or a second liquid-bridge attraction. One common force point, distributed nodal reactions and nodal couples preserve total force and moment. Supply material velocity and radial growth rate; tip speed is not shaft speed. Tangential history survives adjacent spans on the same strand and clears upon release. Multipatch contact on one material strand requires explicit tracking: the law rejects it instead of double counting. Remeshing/reindexing requires a history remap/reset. The overlap guard (default 5% of the smaller radius) is a rejection threshold, not a target. The friction/loads and native DEM are 2D per unit depth; only detection is 3D. This is not a completed wet moving-root simulation.
-
-## Executed checks
-
-12,000 random gap tests vs independent long-double minimisation (max error 4.53e-16 in test coordinates); 60 moving 3D frames with an inserted branch vs exhaustive geometry; shared-node, fork, sliding, rigid rotation, force/torque and release tests. 300 swept scenes: all 129 with penetration in dense sampling returned alerts. These tests do not prove all grazing events are physically resolved. The original native regression suite and 20 pre-existing application/calibration tests passed locally.
-
-The 56-disk dry cell uses a prescribed 100 µm apical extension and fixed lateral and far boundaries. The 101 recorded output rows were identical between direct and cached search in each run at 10, 5 and 2.5 µs intervals. Finest peak axial force was 2.211 N/m; largest final grain motion 67.73 µm. The two finest sampled force curves differed by at most 1.72% of the finest peak; peak change was 0.24%. This is verification, not a fit to tree tissue. An early 1e5 N/m² root stiffness trial exceeded the overlap guard; the recorded synthetic fixture uses 4e5 N/m². A separate spring-supported grain recovered the analytic 0.00990099 N/m reaction for axial and radial growth.
-
-See `reference.csv` for selected benchmark results. Timings are median of five interleaved ten-frame runs, one thread on an AMD EPYC 9V74, GCC 14.2 -O3. Initial setup and cache rebuilds are included; solver, friction application and swept guard timings are not. The large scenes are prescribed search geometries, not 16,384-grain biological simulations. All benchmark modes checked contact IDs, gaps and normals against exhaustive output. No speed ranking against other codes or physical validation is claimed.
-
-Prior work: [Fakih et al.](https://doi.org/10.1103/PhysRevE.99.042903) (grain-scale root growth), [distance to swept spheres](https://doi.org/10.1080/10867651.2004.10504892), [LAMMPS neighbour-list design](https://docs.lammps.org/stable/Developer_par_neigh.html). Experimental target, not used for calibration: [Keyes et al. 4D root-growth CT and DVC](https://doi.org/10.1098/rsif.2017.0560).
+The root is a prescribed tapered surface, not a flexible beam or biological
+growth law. Force dynamics are 2D per unit depth; detection also supports 3D
+sphere/span queries. LBM/IBM and equilibrium suction are separate project paths,
+not exercised in this dry driver. This milestone is verified within scope and
+experimentally unvalidated. No universal speed or whole-tree claim is made.
