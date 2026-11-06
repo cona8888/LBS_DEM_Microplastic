@@ -1,0 +1,13 @@
+{
+  "full_source_baseline": "935f05c9f394c65742a6b829bebb4385e801c117",
+  "full_source_final_commit": "44301ea0df7fc7498f610757d56cc94b82ef0401",
+  "full_source_branch": "validate/root-soil-water",
+  "remote_parent": "3bbb9eeb8aa272f51bb125463cacf35fec8d3e23",
+  "remote_scope": "Audit, compact evidence and patch only; the complete runnable water application, seed, harness, figures and original Git history are in the conversation deliverables.",
+  "source_zip": {"name": "RhizoField_water_validation_source.zip", "bytes": 3967687, "sha256": "73232b5dbf7df169cd19f5f774de939c8083b17b3aad39b0e41914c4fcf99f52"},
+  "bundle": {"name": "RhizoField_water_validation.bundle", "bytes": 2960493, "sha256": "8a0f6359cee9ddc6f1c4577ee4060799b36f3d43e58235416561f223ba119d46"},
+  "evidence_zip": {"name": "RhizoField_water_validation_evidence.zip", "bytes": 1176657, "sha256": "1340fc9e80b6eeade1c48b21625e2008dddd99947d88c4f5c604b5a52407352c"},
+  "clean_rebuild": {"source_commit": "c2e2553c8f9d7faa7544a01979215c2b20c4e85d", "tests": 23, "paired_history_byte_equal": true, "history_path": "validation_water/results/paired_s2_n18.csv", "history_sha256": "ecd90ec4ef70d07814a20d2a9f45daaef371fb2873818e52ae55d45540910232"},
+  "calibration_refitted": false,
+  "integrated_physical_validation": "not completed"
+}
