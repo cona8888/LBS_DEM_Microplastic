@@ -1,0 +1,79 @@
+diff --git a/applications/rhizofield/field.py b/applications/rhizofield/field.py
+index 941aa31..03abd25 100644
+--- a/applications/rhizofield/field.py
++++ b/applications/rhizofield/field.py
+@@ -34,11 +34,16 @@ class State:
+     wet_length: float            # wetted root perimeter, m
+ 
+ class Mesh:
+-    def __init__(self, labels, gap=12., *, grain_deg=60., root_deg=50.):
++    def __init__(self, labels, gap=12., *, grain_deg=60., root_deg=50., interface_width=WIDTH):
+         if not np.isfinite(gap) or not 9 <= gap <= 16:
+-            raise ValueError('Patch validated only for gaps 9..16 reference spacings.')
++            raise ValueError('Patch implemented only for gaps 9..16 reference spacings.')
+         self.labels=np.asarray(labels); self.fluid=self.labels==0
+-        if self.labels.shape not in ((67,94),(134,188)): raise ValueError('Unexpected reference mesh.')
++        if self.labels.shape not in tuple((67*k,94*k) for k in (1,2,3,4,8)): raise ValueError('Unexpected reference mesh.')
++        if not np.isfinite(interface_width) or interface_width<=0: raise ValueError('Interface width must be finite and positive.')
++        self.interface_width=float(interface_width)
++        self.kappa=self.interface_width**2/2
++        self.sigma=2*self.interface_width/3
++        self.pressure_scale=GAMMA/(self.sigma*DX)
+         self.scale=self.labels.shape[0]//67; self.hy=hy=1./self.scale
+         edge=np.arange(self.labels.shape[1]+1)*hy-.5
+         move=np.interp(edge,[-.5,49.5,59.5,75.5,91.5,93.5],[0,0,1,1,0,0])
+@@ -70,9 +75,9 @@ class Mesh:
+         self.K=sparse.coo_matrix((np.r_[k,k,-k,-k],(np.r_[i,j,i,j],np.r_[i,j,j,i])),shape=(n,n)).tocsr()
+ 
+     def energy_grad(self,x):
+-        kx=self.K@x; f=.25*(x*x-1)**2; h=-SIGMA*(3*x-x**3)/4
+-        E=self.V@f + .5*KAPPA*(x@kx) + self.wall@h
+-        grad=self.V*x*(x*x-1) + KAPPA*kx -.75*SIGMA*self.wall*(1-x*x)
++        kx=self.K@x; f=.25*(x*x-1)**2; h=-self.sigma*(3*x-x**3)/4
++        E=self.V@f + .5*self.kappa*(x@kx) + self.wall@h
++        grad=self.V*x*(x*x-1) + self.kappa*kx -.75*self.sigma*self.wall*(1-x*x)
+         return E,grad
+ 
+     def water(self,x): return .5*(self.V@(1+x))
+@@ -92,15 +97,15 @@ class Mesh:
+         r=np.max(np.abs(g/V-mu))
+         if r>tol or not np.isfinite(r) or abs(self.water(x)-water)>1e-8:
+             raise RuntimeError(f'Equilibrium or mass check failed: residual={r}, solver={res.message}')
+-        f=.25*(x*x-1)**2; h=-SIGMA*(3*x-x**3)/4
+-        slope=self.Vd@f+.5*KAPPA*(self.kd@((x[self.i]-x[self.j])**2))+self.walld@h-mu*(self.Vd@(1+x))
++        f=.25*(x*x-1)**2; h=-self.sigma*(3*x-x**3)/4
++        slope=self.Vd@f+.5*self.kappa*(self.kd@((x[self.i]-x[self.j])**2))+self.walld@h-mu*(self.Vd@(1+x))
+         roots=np.roots([1.,0.,-1.,-mu]); real=np.sort(roots.real[np.abs(roots.imag)<1e-10]);
+         if len(real)!=3: raise RuntimeError('Bulk extensions do not admit two stable phases')
+         gas,liq=real[[0,-1]]
+         p=lambda z: mu*z-(z*z-1)**2/4
+         # Compact smooth wet-wall indicator with exact dry/wet bulk limits.
+         z=np.clip((x+.8)/1.6,0,1); wet=self.root@(z*z*(3-2*z))
+-        return State(x,float(mu),float(r),float(E),float(self.water(x)),float(-slope*P0*DX),float((p(liq)-p(gas))*P0),float(wet*DX))
++        return State(x,float(mu),float(r),float(E),float(self.water(x)),float(-slope*self.pressure_scale*DX),float((p(liq)-p(gas))*self.pressure_scale),float(wet*DX))
+ 
+     def map(self, x):
+         out=np.full(self.labels.shape,np.nan); out[self.fluid]=x; return out
+@@ -108,7 +113,7 @@ class Mesh:
+     def contour(self,s,pad=3,body=1):
+         """Independent Korteweg stress integral across a four-sided fluid contour."""
+         if body not in (1,2) or pad not in (2,3,4,5): raise ValueError('Invalid contour')
+-        pad=pad if self.scale==1 else 2*pad+1
++        pad=self.scale*pad+self.scale-1
+         phi=self.map(s.phi); _,g=self.energy_grad(s.phi); mu=self.map(g/self.V)
+         gy,gx=np.gradient(phi,self.hy,self.cx); width=np.diff(self.edge)
+         ys,xs=np.where(self.labels==body); x0,x1=xs.min()-pad,xs.max()+pad; y0,y1=ys.min()-pad,ys.max()+pad
+@@ -117,10 +122,10 @@ class Mesh:
+         def xface(k):
+             a,b=phi[y0:y1+1,k],phi[y0:y1+1,k+1]; t=width[k]/(width[k]+width[k+1]); avg=lambda f:(1-t)*f[y0:y1+1,k]+t*f[y0:y1+1,k+1]
+             n=(b-a)/(self.cx[k+1]-self.cx[k]); v=avg(phi); tang=avg(gy)
+-            return self.hy*np.sum(-v*avg(mu)+(v*v-1)**2/4+.5*KAPPA*(tang*tang-n*n))
++            return self.hy*np.sum(-v*avg(mu)+(v*v-1)**2/4+.5*self.kappa*(tang*tang-n*n))
+         def yface(k):
+             sl=slice(x0,x1+1); n=(phi[k+1,sl]-phi[k,sl])/self.hy; tang=(gx[k+1,sl]+gx[k,sl])/2
+-            return np.sum(-KAPPA*n*tang*width[sl])
+-        force=(xface(x1)-xface(x0)+yface(y1)-yface(y0-1))*P0*DX
++            return np.sum(-self.kappa*n*tang*width[sl])
++        force=(xface(x1)-xface(x0)+yface(y1)-yface(y0-1))*self.pressure_scale*DX
+         if not np.isfinite(force): raise RuntimeError('Stress stencil intersects a solid')
+         return float(force)
