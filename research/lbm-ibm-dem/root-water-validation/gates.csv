@@ -1,0 +1,18 @@
+test,value,threshold,unit,status,evidence_level
+"Water ledger, full coupled runs",1.852884572118782e-21,1e-16,m2,PASS,numerical verification
+Coupled force residual,9.664870381786983e-08,1.1e-07,N/m,PASS,numerical verification
+Matched cumulative extraction,0.0,1e-16,m2,PASS,numerical control
+Energy/virtual-work force,1.774521725117495e-05,0.1,percent,PASS,numerical verification
+Stress contour vs energy force,1.4173344039138964,2.5,percent,PASS,independent discretisation
+Force change on timestep halving,0.006725644016403187,1.0,percent,PASS,numerical refinement
+Extraction change on timestep halving,0.28260328990420414,1.0,percent,PASS,numerical refinement
+"Laplace check, original W at 6.25um grid",11.063162997783582,5.0,percent,FAIL,sharp-interface consistency diagnostic
+"Laplace check, half W at 6.25um grid",0.3805745699505536,5.0,percent,PASS,sharp-interface consistency diagnostic
+Radial Richards steady Q at 128 cells,5.827922076040437e-05,0.1,percent,PASS,analytical verification; separate reference
+Radial Richards transient budget,9.822935210189714e-20,1e-16,m2,PASS,numerical verification; separate reference
+Saturated cup geometry holdout,4.000000000000014,10.0,percent,PASS,component physical validation
+Tree holdout: beech,63.85767790262173,20.0,percent,FAIL,chronological component validation
+Tree holdout: oak,84.5528455284553,20.0,percent,FAIL,chronological component validation
+Tree holdout: spruce,33.68983957219251,20.0,percent,FAIL,chronological component validation
+Whole-model independent force/volume/pore field,,,not applicable,NOT RUN,physical validation
+Drainage-path effect size qualified,,,not applicable,INCONCLUSIVE,model numerical uncertainty

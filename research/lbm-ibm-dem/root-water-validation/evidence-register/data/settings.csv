@@ -1,0 +1,8 @@
+﻿name,value
+snapshot,2026-11-10
+version,1.1
+model_baseline,"RhizoField calibrated source, previously archived commit 2de3911"
+consensus_mode,Pro
+consensus_thread,https://consensus.app/search/update-the-experimental-evidence-database-for-rhiz/a7h2W9MZSDaVUB83fLOkkA/
+solver_changes,None
+scope,Frozen calibration plus traceable capillary references for different geometries.

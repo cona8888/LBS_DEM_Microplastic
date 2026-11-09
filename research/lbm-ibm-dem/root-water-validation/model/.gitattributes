@@ -1,0 +1,11 @@
+*.csv text eol=lf
+*.py text eol=lf
+*.cpp text eol=lf
+*.md text eol=lf
+*.svg text eol=lf
+
+*.pdf binary
+*.png binary
+
+# Preserve the byte-exact imported seed; its historical blob uses CRLF.
+applications/rhizofield/seed/pore_traction.csv -text

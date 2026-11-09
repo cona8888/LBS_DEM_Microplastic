@@ -1,0 +1,9 @@
+size,diameter_mm,length_mm,saturation_pct,vacuum_bar,time_min,volume_cm3,endpoint,role
+small,2.5,10,100,0.1,20,1.2,fixed_time,train
+large,6.0,20,100,0.1,20,6.0,fixed_time,holdout_geometry
+small,2.5,10,100,0.1,17,1,fixed_volume,scale_reference
+large,6.0,20,100,0.1,3.3,1,fixed_volume,scale_check
+small,2.5,10,85,0.3,34,1,fixed_volume,scale_reference
+large,6.0,20,85,0.3,4.6,1,fixed_volume,scale_check
+small,2.5,10,70,0.5,38,1,fixed_volume,scale_reference
+large,6.0,20,70,0.5,5.7,1,fixed_volume,scale_check

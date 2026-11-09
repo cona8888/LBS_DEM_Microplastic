@@ -1,0 +1,3 @@
+# Preserve imported transcriptions and CSV writer line endings for hash checks.
+original/** -text
+data/*.csv -text

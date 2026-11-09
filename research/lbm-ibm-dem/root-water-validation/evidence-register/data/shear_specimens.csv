@@ -1,0 +1,19 @@
+﻿specimen,source_id,material,density_Mg_m3,suction_op,suction_kPa,water_op,water_g_g_from_SWRC,root_area_ratio_pct,experiment_mode,note,source_url
+Willow C,BUL22,Willow,1.4,=,3.64,=,0.257,0.409,interrupted XCT,Same physical specimen as Bull 2020.,https://doi.org/10.1098/rspa.2021.0210
+Willow E,BUL22,Willow,1.41,=,2.57,=,0.261,0.275,continuous outside XCT,,https://doi.org/10.1098/rspa.2021.0210
+Willow F,BUL22,Willow,1.36,>,88.24,<,0.176,0.34,interrupted XCT,Censored readings; top sensor may not represent shear plane.,https://doi.org/10.1098/rspa.2021.0210
+Willow H,BUL22,Willow,1.43,=,2.81,=,0.26,0.272,continuous outside XCT,,https://doi.org/10.1098/rspa.2021.0210
+Willow I,BUL22,Willow,1.37,=,3.65,=,0.257,0.575,continuous outside XCT,,https://doi.org/10.1098/rspa.2021.0210
+Gorse A,BUL22,Gorse,1.39,=,2.73,=,0.26,0.036,interrupted XCT,,https://doi.org/10.1098/rspa.2021.0210
+Gorse B,BUL22,Gorse,1.43,=,2.57,=,0.261,0.065,continuous outside XCT,,https://doi.org/10.1098/rspa.2021.0210
+Gorse G,BUL22,Gorse,1.38,=,3.43,=,0.257,0.063,interrupted XCT,,https://doi.org/10.1098/rspa.2021.0210
+Gorse J,BUL22,Gorse,1.41,=,2.56,=,0.261,0.013,continuous outside XCT,,https://doi.org/10.1098/rspa.2021.0210
+Gorse K,BUL22,Gorse,1.36,=,2.41,=,0.262,0.05,continuous outside XCT,,https://doi.org/10.1098/rspa.2021.0210
+Fallow D,BUL22,Fallow,1.39,=,2.74,=,0.26,,interrupted XCT,Root area ratio not applicable.,https://doi.org/10.1098/rspa.2021.0210
+Fallow L,BUL22,Fallow,1.36,=,2.68,=,0.261,,continuous outside XCT,Root area ratio not applicable.,https://doi.org/10.1098/rspa.2021.0210
+Fallow N,BUL22,Fallow,1.42,=,2.07,=,0.263,,continuous outside XCT,Root area ratio not applicable.,https://doi.org/10.1098/rspa.2021.0210
+Fallow O,BUL22,Fallow,1.37,=,2.68,=,0.261,,continuous outside XCT,Root area ratio not applicable.,https://doi.org/10.1098/rspa.2021.0210
+Fallow P,BUL22,Fallow,1.38,=,3.37,=,0.258,,interrupted XCT,Candidate unrooted reference for Willow C; not exactly matched.,https://doi.org/10.1098/rspa.2021.0210
+Analogue M,BUL22,Analogue,1.43,=,1.51,=,0.265,0.029,continuous outside XCT,,https://doi.org/10.1098/rspa.2021.0210
+Analogue Q,BUL22,Analogue,1.41,=,1.71,=,0.264,0.029,continuous outside XCT,,https://doi.org/10.1098/rspa.2021.0210
+Analogue R,BUL22,Analogue,1.42,missing,,missing,,0.058,continuous outside XCT,Unavailable suction: sensor failure.,https://doi.org/10.1098/rspa.2021.0210

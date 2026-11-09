@@ -1,0 +1,15 @@
+{
+  "direct_cached_4000": 0.0,
+  "direct_cached_8000": 0.0,
+  "direct_cached_16000": 0.0,
+  "direct_cached_32000": 0.0,
+  "direct_cached_64000": 0.0,
+  "segmentation_2_force_relative": 0.0,
+  "segmentation_4_force_relative": 0.0,
+  "finest_pair_max_force_curve_relative": 0.013758882799654037,
+  "finest_pair_peak_relative": 0.002469201777752672,
+  "finest_pair_force_envelope_relative": 0.013758882799654037,
+  "static_max_motion_m": 0.0,
+  "static_max_force_N_per_m": 0.0,
+  "status": "PASS"
+}

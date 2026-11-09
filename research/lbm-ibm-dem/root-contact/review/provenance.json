@@ -1,0 +1,13 @@
+{
+  "base_local_commit": "03ee352240c6dd582d5d10b50e38ddb9f0d69a77",
+  "base_remote_commit": "60518bbef283f8ff3dcdb407bddcfc802d99be41",
+  "cpu": "Model name:                              AMD EPYC 9V74 80-Core Processor",
+  "memory_limit_bytes": "4294967296",
+  "python": "3.13.5",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "native_source_sha256": {
+    "include/common.hpp": "99b4715f13ba082fc3a98a9917802e99d5a6d7cd6ff77677c374100e29cfe0a4",
+    "include/dem.hpp": "89738117f1229f7ba82f077556e9cd60780cb21d9e0fa1792207e111670c2bec",
+    "src/dem.cpp": "0df2ba37a9c4f691aa0d7eb1809eae187cac8e932f4f2bc2341e2b513ce10fd0"
+  }
+}

@@ -1,0 +1,13 @@
+./bin/test
+PASS 12000 independent tapered-gap queries; maximum error=4.52546e-16 coordinate units
+PASS seam, fork, thickness, topology and 60 moving 3D frames
+PASS swept translation, swept radius, seam history, force/torque, Coulomb and release
+./bin/extra
+PASS 300 swept scenes; dense samples with penetration=129; possible-event alerts=129
+PASS common rigid rotation, fork friction guard, distinct strands, near-contained taper and invalid input
+make: 'bin/integration_test' is up to date.
+make: 'bin/growth_cell' is up to date.
+make: 'bin/native_probe' is up to date.
+PASS tangential/rotational elastic oscillator; max_relative_energy_error=0.0002467401089826238
+PASS active-fraction slip, read-only force query, duplicate input, release/recontact, rollback, stable identity
+PASS conservative/damped oscillator, convergence and kick work
