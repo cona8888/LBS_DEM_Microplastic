@@ -1,0 +1,56 @@
+{
+  "ceramic": {
+    "lateral": {
+      "Lp_apparent_m_Pa_s": 1.2732395447351624e-09,
+      "large_pred_cm3": 5.759999999999999,
+      "large_obs_cm3": 6.0,
+      "error_percent": -4.000000000000014
+    },
+    "one_end_plus_lateral": {
+      "Lp_apparent_m_Pa_s": 1.1983431009272117e-09,
+      "large_pred_cm3": 5.827764705882351,
+      "large_obs_cm3": 6.0,
+      "error_percent": -2.870588235294147
+    }
+  },
+  "trees": [
+    {
+      "species": "beech",
+      "n_train_dates": 3,
+      "Lp_fit_m_Pa_s": 2.916666666666667e-14,
+      "holdout_m_Pa_s": 1.78e-14,
+      "holdout_sd_m_Pa_s": 9.6e-15,
+      "error_pct": 63.85767790262173,
+      "LODO_RMSE_m_Pa_s": 7.083862725315274e-15,
+      "LODO_fit_min": 2.436666666666667e-14,
+      "LODO_fit_max": 2.916666666666667e-14
+    },
+    {
+      "species": "oak",
+      "n_train_dates": 3,
+      "Lp_fit_m_Pa_s": 1.5133333333333334e-14,
+      "holdout_m_Pa_s": 8.199999999999999e-15,
+      "holdout_sd_m_Pa_s": 5.4e-15,
+      "error_pct": 84.5528455284553,
+      "LODO_RMSE_m_Pa_s": 4.510727953076607e-15,
+      "LODO_fit_min": 1.2200000000000001e-14,
+      "LODO_fit_max": 1.5133333333333334e-14
+    },
+    {
+      "species": "spruce",
+      "n_train_dates": 2,
+      "Lp_fit_m_Pa_s": 2.5e-14,
+      "holdout_m_Pa_s": 1.8700000000000002e-14,
+      "holdout_sd_m_Pa_s": 9.2e-15,
+      "error_pct": 33.68983957219251,
+      "LODO_RMSE_m_Pa_s": 1.8190244638266964e-14,
+      "LODO_fit_min": 1.465e-14,
+      "LODO_fit_max": 2.905e-14
+    }
+  ],
+  "grain_wall_inputs_deg": {
+    "50um": 52.77724847963083,
+    "25um": 51.24901619023145
+  },
+  "usage": "Tree and cup Lp are whole-system effective values referenced to total external area. NOT intrinsic wetted membrane values. Only transfer under stated surface and resistance assumptions. Glass angle presets are specific to initial patch geometry and readout; neither root wetting nor force was fitted."
+}

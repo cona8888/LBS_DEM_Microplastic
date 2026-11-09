@@ -1,0 +1,44 @@
+[
+  {
+    "scale": 2,
+    "interface_width_um": 125.0,
+    "force_contrast_pct": -1.0306921604256059,
+    "root_laplace_error_pct": 10.345452655774757,
+    "outer_laplace_error_pct": 2.2704127198398982
+  },
+  {
+    "scale": 2,
+    "interface_width_um": 62.5,
+    "force_contrast_pct": -0.6769785265119732,
+    "root_laplace_error_pct": 1.546661843370012,
+    "outer_laplace_error_pct": 1.4828721692233038
+  },
+  {
+    "scale": 4,
+    "interface_width_um": 125.0,
+    "force_contrast_pct": -0.8904565295963063,
+    "root_laplace_error_pct": 10.302883341689494,
+    "outer_laplace_error_pct": 2.8552953759113153
+  },
+  {
+    "scale": 4,
+    "interface_width_um": 62.5,
+    "force_contrast_pct": -0.237054961219052,
+    "root_laplace_error_pct": 0.5504343653773391,
+    "outer_laplace_error_pct": 0.6222581879114064
+  },
+  {
+    "scale": 8,
+    "interface_width_um": 125.0,
+    "force_contrast_pct": -0.9000574267579831,
+    "root_laplace_error_pct": 11.063162997783582,
+    "outer_laplace_error_pct": 3.4500176849157294
+  },
+  {
+    "scale": 8,
+    "interface_width_um": 62.5,
+    "force_contrast_pct": -0.15485600267849398,
+    "root_laplace_error_pct": 0.33620408945594926,
+    "outer_laplace_error_pct": 0.3805745699505536
+  }
+]

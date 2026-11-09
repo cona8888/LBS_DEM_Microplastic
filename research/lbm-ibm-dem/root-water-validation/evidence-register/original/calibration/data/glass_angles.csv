@@ -1,0 +1,5 @@
+contact_site,apparent_deg,split
+upper_left,31,train
+upper_right,31,train
+lower_left,39,holdout
+lower_right,31,holdout

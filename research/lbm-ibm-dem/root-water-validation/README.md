@@ -1,4 +1,10 @@
-# Root–soil–water validation audit
+# Root–soil–water validation
+
+The [runnable water model](model/README.md), [experimental evidence register](evidence-register/README.md), and [liquid-area analysis](model/validation_water/volume_mapping/README.md) are included on this branch.
+
+**10 November 2026.** At a 677.5 µm root–grain gap, the direction of the simulated drainage effect depends on the definition of liquid amount. At a 12.5 µm grid spacing and a 62.5 µm interface width, holding the conserved phase inventory gives a −0.237% root-versus-outer force contrast. Matching each endpoint’s earlier geometric liquid area gives +0.171%. Both use the same frozen calibration. The evidence register adds 10 primary-source capillary observations, grouped by geometry and measurement method. Whole-model experimental validation remains open.
+
+## Archived validation audit
 
 **Decision: the integrated root–soil–water model is not yet experimentally validated.** The current equilibrium-water application passes important numerical checks, but the earlier approximately 1% force contrast is not qualified against interface-width uncertainty. No parameters were refitted in this audit.
 

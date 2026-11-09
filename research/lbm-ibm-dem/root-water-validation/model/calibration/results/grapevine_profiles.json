@@ -1,0 +1,21 @@
+{
+  "profiles": {
+    "not_soaked": {
+      "Lp_m_Pa_s": 4.3e-14,
+      "SE_m_Pa_s": 9.8e-15
+    },
+    "soaked_24h": {
+      "Lp_m_Pa_s": 3.4999999999999997e-13,
+      "SE_m_Pa_s": 1.6e-13
+    }
+  },
+  "tested_driving_pressure_Pa": [
+    10000,
+    20000,
+    30000
+  ],
+  "reported_advancing_deg": 100.6,
+  "reported_plus_minus_deg": 4.2,
+  "receding_deg": null,
+  "wet_area_transfer": "Uniform active-surface scaling is an assumption; calibration used root total area in contact with water."
+}

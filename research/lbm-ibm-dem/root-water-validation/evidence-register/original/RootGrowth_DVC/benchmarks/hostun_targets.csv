@@ -1,0 +1,4 @@
+material,state,metric,value,unit,evidence_type,source
+HN31,loose,radial_extent_porosity_above_initial_bulk,2.5,mm,approximate published result not newly correlated,10.1038/s41598-021-01056-1
+HN1.5-2,loose,radial_extent_porosity_above_initial_bulk,1.8,mm,approximate published result not newly correlated,10.1038/s41598-021-01056-1
+HN31,dense,radial_extent_porosity_above_initial_bulk,10,mm,paper only not in released loose specimens,10.1038/s41598-021-01056-1

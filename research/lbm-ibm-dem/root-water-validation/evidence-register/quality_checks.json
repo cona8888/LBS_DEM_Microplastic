@@ -1,0 +1,17 @@
+{
+  "database_integrity": "ok",
+  "foreign_key_violations": [],
+  "counts": {
+    "sources": 27,
+    "observations": 110,
+    "shear_specimens": 18,
+    "resources": 27,
+    "tests": 15,
+    "fit_rows": 11,
+    "reserved_outcomes": 25
+  },
+  "numeric_rows": 109,
+  "new_observations": 61,
+  "legacy_observations": 39,
+  "capillary_supplement_rows": 10
+}

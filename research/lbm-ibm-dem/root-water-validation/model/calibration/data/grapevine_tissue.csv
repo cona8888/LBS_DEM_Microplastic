@@ -1,0 +1,4 @@
+tissue,state,mean_m_s_MPa,se_m_s_MPa,role
+intact_bark,not_soaked,4.3e-8,9.8e-9,measured_profile
+intact_bark,soaked_24h,3.5e-7,1.6e-7,measured_profile
+bark_removed,not_soaked,8.6e-7,1.5e-7,comparison_only
